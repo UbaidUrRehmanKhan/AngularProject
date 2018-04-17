@@ -1,0 +1,12 @@
+<div class="container">
+
+  <!-- <h1 *ngIf="securityObject.isAdmin; else user">Admin Dashboard</h1>
+  <ng-template #user>User Dashboard</ng-template> -->
+
+
+    <app-admin-dashboard *appDashboard = isAdmin></app-admin-dashboard>
+    <app-user-dashboard *appDashboard = !isAdmin></app-user-dashboard>
+  <hr>
+</div>
+
+

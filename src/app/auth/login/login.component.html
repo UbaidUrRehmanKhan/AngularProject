@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="alert alert-danger"
+      *ngIf="SecurityObject && !SecurityObject.isAuthenticated">
+        <p>Invalid User Name/Password.</p>
+      </div>
+    </div>
+  </div>
+
+
+
+  <form #f="ngForm" (ngSubmit)= "login()">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Log in</h3>
+          </div>
+          <div class="panel-body">
+            <div class="form-group">
+              <label for="email">User Name/Email</label>
+              <div class="input-group">
+                <input  id="email" name="email"
+                       class="form-control" required type="email" email
+                       [(ngModel)]="user.email" #email="ngModel" />
+              </div>
+              <br>
+              <div *ngIf="email.invalid && (email.dirty || email.touched)"
+              class="alert alert-danger">
+
+                <div *ngIf="email.errors.required">
+                  Username/Email is required.
+                </div>
+                <div *ngIf="email.errors.email">
+                  Invalid Email
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <div class="input-group">
+                <input id="password" name="password"
+                       class="form-control" required
+                       [(ngModel)]="user.password" #password="ngModel"
+                       type="password" />
+              </div>
+              <br>
+              <div *ngIf="password.invalid && (password.dirty || password.touched)"
+              class="alert alert-danger">
+
+                <div *ngIf="password.errors.required">
+                  Password is required.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <button [disabled]="!f.valid" class="btn btn-primary">
+              Login
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+
+
