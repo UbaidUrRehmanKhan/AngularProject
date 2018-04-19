@@ -1,5 +1,9 @@
 export class UserModel {
-  id: number = 0 ;
-  name: string = '' ;
-  isActive: boolean = true;
+  id = 0;
+  email = '';
+  name = '';
+  isActive = 0;
+  isAdmin = 0;
+  updated_at = '';
+  created_at = '';
 }

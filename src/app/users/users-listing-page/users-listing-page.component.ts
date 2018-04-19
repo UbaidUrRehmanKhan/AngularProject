@@ -15,19 +15,27 @@ export class TableComponent implements OnInit {
   constructor(private userDataService: UserService) { }
 
   ngOnInit() {
+    this.getUsers();
+  }
+
+
+  getUsers(): void {
     this.columns = this.userDataService.getColumns();
     this.userDataService.getUsers().subscribe(
-      resp => {this.users = resp;
+      resp => {
         console.log(resp);
+        this.users = resp;
+        console.log('fetching all users in users list' + this.users);
       },
       () => {
-        console.log('error');
+        console.log('error in displaying users list');
       }
     );
   }
 
   onSelect(user: UserModel): void {
     this.selectedUser = user;
+    console.log('selected User' + this.selectedUser);
   }
 
 }

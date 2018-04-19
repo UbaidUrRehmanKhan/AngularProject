@@ -9,24 +9,49 @@ import { HttpHeaders } from '@angular/common/http';
 import { HttpClient} from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+  headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization' : 'Bearer ' + localStorage.getItem('bearerToken')}),
 
+};
+const API_URL = 'http://example.com/api/';
 
 @Injectable()
 export class UserService {
 
-  user: UserModel;
-  users: UserModel[]
-;  private usersUrl = 'users';  // URL to web api
+  users: UserModel[];
 
   constructor(private http: HttpClient) { }
 
+  // with API
 
   getUsers(): Observable<UserModel[]> {
-    return Observable.of(USERS).delay(100);
+    return this.http.get<UserModel[]>(API_URL + 'getUsers', httpOptions)
+    .pipe(
+        tap(resp => {
+            this.users = resp;
+            console.log('users after assigning' + this.users);
+        }));
   }
+
+
+  // with Mock Data
+
+  // getUsers(): Observable<UserModel[]> {
+  //   console.log(localStorage.getItem('bearerToken'));
+  //   return Observable.of(USERS).delay(100);
+  // }
+
+
+
   getColumns(): string[] {
     return ['id', 'name', 'isActive'];
   }
+
+
+
+
+  private handleError(error: Response) {
+    return Observable.throw(error.statusText);
+  }
+
+
 }

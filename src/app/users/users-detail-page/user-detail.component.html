@@ -1,21 +1,44 @@
-<div *ngIf="user;else other_content">
-
+<br><br>
+<div class="container">
+  <div *ngIf="user;else other_content">
     <h2>{{ user.name | uppercase }} Details</h2>
-    <div><span>id: </span>{{user.id}}</div>
     <div>
-      <label class="form-check-inline">name:&nbsp;
+        <label class="form-check-inline">ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input class="form-control" [(ngModel)]="user.id" readonly>
+        </label>
+    </div>
+    <div>
+      <label class="form-check-inline">Name:&nbsp;
         <input class="form-control" [(ngModel)]="user.name" placeholder="name">
+      </label>
+    </div>
+    <div>
+      <label class="form-check-inline">Email:&nbsp;
+        <input class="form-control" [(ngModel)]="user.email"  type="email" placeholder="name">
       </label>
     </div>
     <div>
       Status:&nbsp;
       <label class="form-check-inline"> Active&nbsp;
-        <input class="form-check-input" type="radio" name="status" [value]="true" [(ngModel)]="user.isActive">
+        <input class="form-check-input" type="radio" name="status" [value]="1" [(ngModel)]="user.isActive">
       </label>
       <label class="form-check-inline"> Inactive&nbsp;
-        <input class="form-check-input" type="radio" name="status" [value]="false" [(ngModel)]="user.isActive">
+        <input class="form-check-input" type="radio" name="status" [value]="0" [(ngModel)]="user.isActive">
       </label>
     </div>
+    <div>
+      <label class="form-check-inline">Role:&nbsp;&nbsp;&nbsp;
+        <div *ngIf="user.isAdmin==1 ;else else_content">
+          <input class="form-control" value="Admin"  type="text"  readonly>
+        </div>
+        <ng-template #else_content>
+            <input class="form-control" value="User"  type="text"  readonly>
+          </ng-template>
+      </label>
 
+    </div>
+  </div>
+  <ng-template id="other_content">
+    <div class="alert alert-danger">Unauthorized access</div>
+  </ng-template>
 </div>
-<ng-template #other_content>Unauthorized access</ng-template>

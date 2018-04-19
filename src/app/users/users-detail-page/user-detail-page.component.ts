@@ -27,15 +27,14 @@ export class UserDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.userService.getUsers().subscribe(
       resp => {this.users = resp;
-        console.log('Hello' + this.users);
+        console.log('Users List in user-detail' + this.users);
         this.user = this.users.find(x => x.id === id);
+        console.log('Required User in user detail' + this.user);
       },
       () => {
         console.log('error');
       }
     );
-
-    console.log(this.user);
   }
 
 }
