@@ -1,28 +1,30 @@
+
+import { UserService } from './users/user-service.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
+import { AppComponent } from './app.page';
 import { HeaderComponent } from './header/header.component';
-import { TasksComponent } from './tasks/tasks.component';
-import { TasksListComponent } from './tasks/tasks-list/tasks-list.component';
-import { TaskItemComponent } from './tasks/tasks-list/task-item/task-item.component';
-import { AuthComponent } from './auth/auth.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsersComponent } from './users/users.component';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
-import { TaskDetailComponent } from './tasks/tasks-list/task-item/task-detail/task-detail.component';
-import { UserDashboardComponent } from './dashboard/user-dashboard/user-dashboard.component';
-import { AdminDashboardComponent } from './dashboard/admin-dashboard/admin-dashboard.component';
+import { LoginComponent } from './auth/login/login-page.component';
+import { RegisterComponent } from './auth/register/register-page.component';
+import { UserDashboardComponent } from './dashboard/user-dashboard/user-dashboard-container.component';
+import { AdminDashboardComponent } from './dashboard/admin-dashboard/admin-dashboard-container.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { SecurityService } from './security/security.service';
-import { AuthGuard } from './security/auth.guard';
-import { HomeComponent } from './home/home.component';
-import { AdminCheckService } from './security/admin-check.service';
+import { SecurityService } from './Security/security.service';
+import { AuthGuard } from './Security/auth.guard';
+import { HomeComponent } from './home/home-page.component';
+import { AdminCheckService } from './Security/admin-check.service';
 import { JwtModule } from '@auth0/angular-jwt';
 import { DashboardDirective } from './dashboard/dashboard.directive';
+import { TableComponent } from './users/users-listing-page/users-listing-page.component';
+import { UserDetailComponent } from './users/users-detail-page/user-detail-page.component';
+import { TasksListingContainerComponent } from './Tasks/tasks-listing-container/tasks-listing-container.component';
+import { TasksListingFilteringComponent } from './Tasks/tasks-listing-filtering/tasks-listing-filtering.component';
+import { TasksListRecordComponent } from './Tasks/tasks-listing-container/tasks-list-record/tasks-list-record.component';
 
 export function tokenGetter() {
   return localStorage.getItem('bearerToken');
@@ -33,19 +35,20 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     HeaderComponent,
-    TasksComponent,
-    TasksListComponent,
-    TaskItemComponent,
-    AuthComponent,
+
     DashboardComponent,
     UsersComponent,
     LoginComponent,
     RegisterComponent,
-    TaskDetailComponent,
     UserDashboardComponent,
     AdminDashboardComponent,
     HomeComponent,
     DashboardDirective,
+    TableComponent,
+    UserDetailComponent,
+    TasksListingContainerComponent,
+    TasksListingFilteringComponent,
+    TasksListRecordComponent,
 
   ],
   imports: [
@@ -62,7 +65,7 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [SecurityService, AuthGuard, AdminCheckService],
+  providers: [SecurityService, AuthGuard, AdminCheckService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

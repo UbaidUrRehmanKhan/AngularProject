@@ -1,4 +1,4 @@
-import { SecurityService } from './../../security/security.service';
+import { SecurityService } from './../../Security/security.service';
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { AppUserAuth } from './appUserAuth';

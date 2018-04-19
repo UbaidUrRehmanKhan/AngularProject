@@ -1,0 +1,21 @@
+<div *ngIf="user;else other_content">
+
+    <h2>{{ user.name | uppercase }} Details</h2>
+    <div><span>id: </span>{{user.id}}</div>
+    <div>
+      <label class="form-check-inline">name:&nbsp;
+        <input class="form-control" [(ngModel)]="user.name" placeholder="name">
+      </label>
+    </div>
+    <div>
+      Status:&nbsp;
+      <label class="form-check-inline"> Active&nbsp;
+        <input class="form-check-input" type="radio" name="status" [value]="true" [(ngModel)]="user.isActive">
+      </label>
+      <label class="form-check-inline"> Inactive&nbsp;
+        <input class="form-check-input" type="radio" name="status" [value]="false" [(ngModel)]="user.isActive">
+      </label>
+    </div>
+
+</div>
+<ng-template #other_content>Unauthorized access</ng-template>

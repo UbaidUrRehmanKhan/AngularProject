@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SecurityService } from '../security/security.service';
+import { SecurityService } from '../Security/security.service';
 import { AppUserAuth } from '../auth/login/appUserAuth';
 @Component({
   selector: 'app-dashboard',

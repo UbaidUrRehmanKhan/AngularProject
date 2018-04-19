@@ -1,0 +1,15 @@
+.selected {
+  background-color: #CFD8DC !important;
+  color: white;
+}
+a {
+  color: #888;
+  text-decoration: none;
+  position: relative;
+  display: block;
+  width: 250px;
+}
+
+a:hover {
+  color:#607D8B;
+}

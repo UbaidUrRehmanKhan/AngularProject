@@ -1,0 +1,37 @@
+<br>
+<table class="table table-stripped table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Active</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users" (click)="onSelect(user)" [class.selected]="user === selectedUser" >
+            <td *ngFor="let col of columns">
+                <a routerLink="/detail/{{user.id}}">
+                  <div *ngIf="col=='isActive' ;else else_content">
+                      <div *ngIf="user[col]==true ;else other_content">
+                          <span class="badge badge-success">
+                              &nbsp;Active&nbsp;
+                          </span>
+                      </div>
+                      <ng-template #other_content>
+                        <span class="badge badge-danger">
+                            InActive
+                        </span>
+                    </ng-template>
+                  </div>
+                  <ng-template #else_content>
+                    {{user[col]}}
+                  </ng-template>
+                </a>
+
+            </td>
+         </tr>
+    </tbody>
+
+
+    <br>
+    <!-- <app-user-detail [user]="selectedUser"></app-user-detail> -->

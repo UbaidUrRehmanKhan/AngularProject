@@ -1,13 +1,13 @@
-import { AdminCheckService } from './security/admin-check.service';
-import { HomeComponent } from './home/home.component';
-import { TasksListComponent } from './tasks/tasks-list/tasks-list.component';
-import { LoginComponent } from './auth/login/login.component';
+import { AdminCheckService } from './Security/admin-check.service';
+import { HomeComponent } from './home/home-page.component';
+import { LoginComponent } from './auth/login/login-page.component';
 import { UsersComponent } from './users/users.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './security/auth.guard';
+import { AuthGuard } from './Security/auth.guard';
+import { UserDetailComponent } from './users/users-detail-page/user-detail-page.component';
 
 
 const routes: Routes = [
@@ -16,12 +16,11 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'users',
     component: UsersComponent,
-    canActivate: [AuthGuard]},
+    canActivate: [AdminCheckService]},
   { path: 'login',
     component: LoginComponent},
-  { path: 'tasks',
-    component: TasksListComponent,
-    canActivate: [AuthGuard]},
+
+  { path: 'detail/:id', component: UserDetailComponent, canActivate: [AuthGuard , AdminCheckService] },
 ];
 
 @NgModule({
