@@ -33,6 +33,8 @@ import { AssignedTasksContainerComponent } from './users/assigned-tasks-containe
 import { FeedbackItemComponent } from './users/Feedback-Listing/feedback-item/feedback-item.component';
 import { FeedbackListingContainerComponent } from './users/Feedback-Listing/feedback-listing-container/feedback-listing-container.component';
 import { NewfFeedbackItemComponent } from './users/Feedback-Listing/newf-feedback-item/newf-feedback-item.component';
+import { NewTaskPageComponent } from './Tasks/new-task-page/new-task-page.component';
+import { EditTaskPageComponent } from './Tasks/edit-task-page/edit-task-page.component';
 
 export function tokenGetter() {
   return localStorage.getItem('bearerToken');
@@ -64,7 +66,9 @@ export function tokenGetter() {
     AssignedTasksContainerComponent,
     FeedbackItemComponent,
     FeedbackListingContainerComponent,
-    NewfFeedbackItemComponent
+    NewfFeedbackItemComponent,
+    NewTaskPageComponent,
+    EditTaskPageComponent
 
   ],
   imports: [
