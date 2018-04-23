@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TasksListRecordComponent } from './tasks-list-record.component';
+import { EditUserPageComponent } from './edit-user-page.component';
 
-describe('TasksListRecordComponent', () => {
-  let component: TasksListRecordComponent;
-  let fixture: ComponentFixture<TasksListRecordComponent>;
+describe('EditUserPageComponent', () => {
+  let component: EditUserPageComponent;
+  let fixture: ComponentFixture<EditUserPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TasksListRecordComponent ]
+      declarations: [ EditUserPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TasksListRecordComponent);
+    fixture = TestBed.createComponent(EditUserPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

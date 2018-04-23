@@ -1,0 +1,17 @@
+
+ <hr *ngIf="!securityObject.isAdmin">
+<br *ngIf="!securityObject.isAdmin">
+<div class="container" *ngIf="!securityObject.isAdmin">
+  <h1>Give Feedback</h1>
+    <div class="row" id="postEnteringRow">
+        <div class="col-md-10">
+         <div class="form-group">
+              <textarea class="form-control my-2 my-sm-1" rows="4"  Placeholder="Whats have you done so far?...."></textarea>
+         </div>
+        </div>
+        <div class="col-md-1 col-sm-12">
+            <button class="btn btn-lg btn-dark my-2 my-sm-1" type="submit" id="saveBtn">Save</button>
+        </div>
+      </div>
+
+</div>

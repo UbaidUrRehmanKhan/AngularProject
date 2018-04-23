@@ -1,16 +1,13 @@
-import { NgForm } from '@angular/forms';
-import { RegisterUserModel } from './registerUserModel';
+import { Component, OnInit } from '@angular/core';
+import { RegisterUserModel } from '../../auth/register/registerUserModel';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SecurityService } from './../../Security/security.service';
-import { Component, OnInit } from '@angular/core';
-
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-edit-user-page',
+  templateUrl: './edit-user-page.component.html',
+  styleUrls: ['./edit-user-page.component.css']
 })
-export class RegisterComponent implements OnInit {
-
+export class EditUserPageComponent implements OnInit {
 
   user: RegisterUserModel = new RegisterUserModel();
 
@@ -18,13 +15,12 @@ export class RegisterComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router) { }
 
-  ngOnInit() {
 
+  ngOnInit() {
   }
 
 
-
-  register(): void {
+  userEditing(): void {
     this.router.navigate(['dashboard']);
   }
 }

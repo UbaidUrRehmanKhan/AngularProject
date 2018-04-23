@@ -1,72 +1,64 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="alert alert-danger"
-      *ngIf="SecurityObject && !SecurityObject.isAuthenticated">
-        <p>Invalid User Name/Password.</p>
-      </div>
-    </div>
-  </div>
-
-
-
-  <form #f="ngForm" (ngSubmit)= "login()">
+ <div class="container py-5">
     <div class="row">
-      <div class="col-xs-12 col-sm-6">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Log in</h3>
-          </div>
-          <div class="panel-body">
-            <div class="form-group">
-              <label for="email">User Name/Email</label>
-              <div class="input-group">
-                <input  id="email" name="email"
-                       class="form-control" required type="email" email
-                       [(ngModel)]="user.email" #email="ngModel" />
-              </div>
-              <br>
-              <div *ngIf="email.invalid && (email.dirty || email.touched)"
-              class="alert alert-danger">
-
-                <div *ngIf="email.errors.required">
-                  Username/Email is required.
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <!-- form card login -->
+                    <div class="card rounded-0">
+                        <div class="card-header">
+                            <h3 class="mb-0">Login</h3>
+                        </div>
+                        <div class="card-body">
+                            <form class="form" role="form" #f="ngForm" (ngSubmit)= "login()" autocomplete="off" id="formLogin" novalidate="" method="POST">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input class="form-control form-control-lg rounded-0" id="email" name="email"
+                                    required type="email" email
+                                    [(ngModel)]="user.email" #email="ngModel" >
+                                    <br>
+                                    <!-- <div class="invalid-feedback">Oops, you missed this one.</div> -->
+                                    <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                                      class="alert alert-danger">
+                                      <div *ngIf="email.errors.required">
+                                        Email is required.
+                                      </div>
+                                      <div *ngIf="email.errors.email">
+                                        Invalid Email
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" class="form-control form-control-lg rounded-0" id="password" name="password"
+                                     required
+                                    [(ngModel)]="user.password" #password="ngModel">
+                                    <!-- <div class="invalid-feedback">Enter your password too!</div> -->
+                                    <br>
+                                    <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                                      class="alert alert-danger">
+                                      <div *ngIf="password.errors.required">
+                                        Password is required.
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                      <input type="checkbox" class="form-check-input">
+                                      Remember my choice
+                                    </label>
+                                  </div>
+                                <button [disabled]="!f.valid" class="btn btn-success btn-lg float-right" id="btnLogin">Login</button>
+                            </form>
+                        </div>
+                        <!--/card-block-->
+                    </div>
+                    <!-- /form card login -->
                 </div>
-                <div *ngIf="email.errors.email">
-                  Invalid Email
-                </div>
-              </div>
             </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <div class="input-group">
-                <input id="password" name="password"
-                       class="form-control" required
-                       [(ngModel)]="user.password" #password="ngModel"
-                       type="password" />
-              </div>
-              <br>
-              <div *ngIf="password.invalid && (password.dirty || password.touched)"
-              class="alert alert-danger">
-
-                <div *ngIf="password.errors.required">
-                  Password is required.
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="panel-footer">
-            <button [disabled]="!f.valid" class="btn btn-primary">
-              Login
-            </button>
-          </div>
+            <!--/row-->
         </div>
-      </div>
+        <!--/col-->
     </div>
-  </form>
+    <!--/row-->
 </div>
-
-
-
-
-
+<!--/container-->

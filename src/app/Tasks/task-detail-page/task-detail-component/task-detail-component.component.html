@@ -1,0 +1,52 @@
+<div class="container">
+    <br>
+    <div class="card border-success mb-3" style="max-width: 100%;">
+        <div class="card-header">Task Details</div>
+        <div class="card-body text-secondary">
+          <div class="card-text">
+              <div class="row">
+                  <div class="col-md-4"><b>Task ID</b></div>
+                  <div class="col-md-3">1</div>
+                </div>
+              <div class="row">
+                  <div class="col-md-4"><b>Task Name</b></div>
+                  <div class="col-md-3">PHP</div>
+                </div>
+
+
+              <div class="row">
+                  <div class="col-md-4"><b>Created By</b></div>
+                  <div class="col-md-3">Ali</div>
+                </div>
+
+              <div class="row">
+                  <div class="col-md-4"><b>Description</b></div>
+                  <div class="col-md-8">
+                    <p>
+                        ply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                         when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                         It has survived not only five centuries, but also the leap into electronic typesetting,
+                         remaining essentially unchanged. It was popularised in the 1960s with the release of Let
+                        raset sheets containing Lorem Ipsum passages, and more recently with desk
+                    </p>
+                  </div>
+                </div>
+              <hr *ngIf="securityObject.isAdmin">
+              <div class="row" *ngIf="securityObject.isAdmin">
+                  <div class="col-md-2 offset-md-8">
+                    <a class="btn btn-info" routerLink="/userEditing">&nbsp;Edit Data&nbsp;</a>
+
+                  </div>
+                  &nbsp;
+                  <div class="col-md-1">
+                      <a class="btn btn-danger" href="">Delete Task</a>
+
+                    </div>
+              </div>
+
+            </div>
+        </div>
+      </div>
+
+    </div>

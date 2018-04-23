@@ -1,3 +1,5 @@
+import { UserDetailItemComponent } from './users/users-detail-page/user-detail-item/user-detail-item.component';
+import { TasksListingComponent } from './Tasks/tasks-listing-page/tasksListing-page.component';
 
 import { UserService } from './users/user-service.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -23,8 +25,14 @@ import { DashboardDirective } from './dashboard/dashboard.directive';
 import { TableComponent } from './users/users-listing-page/users-listing-page.component';
 import { UserDetailComponent } from './users/users-detail-page/user-detail-page.component';
 import { TasksListingContainerComponent } from './Tasks/tasks-listing-container/tasks-listing-container.component';
-import { TasksListingFilteringComponent } from './Tasks/tasks-listing-filtering/tasks-listing-filtering.component';
-import { TasksListRecordComponent } from './Tasks/tasks-listing-container/tasks-list-record/tasks-list-record.component';
+
+import { EditUserPageComponent } from './users/edit-user-page/edit-user-page.component';
+import { TaskDetailComponentComponent } from './Tasks/task-detail-page/task-detail-component/task-detail-component.component';
+import { TaskDetailPageComponent } from './Tasks/task-detail-page/task-detail-page.component';
+import { AssignedTasksContainerComponent } from './users/assigned-tasks-container/assigned-tasks-container.component';
+import { FeedbackItemComponent } from './users/Feedback-Listing/feedback-item/feedback-item.component';
+import { FeedbackListingContainerComponent } from './users/Feedback-Listing/feedback-listing-container/feedback-listing-container.component';
+import { NewfFeedbackItemComponent } from './users/Feedback-Listing/newf-feedback-item/newf-feedback-item.component';
 
 export function tokenGetter() {
   return localStorage.getItem('bearerToken');
@@ -47,8 +55,16 @@ export function tokenGetter() {
     TableComponent,
     UserDetailComponent,
     TasksListingContainerComponent,
-    TasksListingFilteringComponent,
-    TasksListRecordComponent,
+    EditUserPageComponent,
+    TasksListingComponent,
+    TaskDetailComponentComponent,
+    UserDetailItemComponent,
+    TaskDetailPageComponent,
+    TaskDetailComponentComponent,
+    AssignedTasksContainerComponent,
+    FeedbackItemComponent,
+    FeedbackListingContainerComponent,
+    NewfFeedbackItemComponent
 
   ],
   imports: [

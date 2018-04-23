@@ -10,7 +10,7 @@
     <tbody>
         <tr *ngFor="let user of users" (click)="onSelect(user)" [class.selected]="user === selectedUser" >
             <td *ngFor="let col of columns">
-                <a routerLink="/detail/{{user.id}}">
+                <a routerLink="/users/{{user.id}}">
                   <div *ngIf="col=='isActive' ;else else_content">
                       <div *ngIf="user[col]==true ;else other_content">
                           <span class="badge badge-success">

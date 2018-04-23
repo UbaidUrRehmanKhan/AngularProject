@@ -1,4 +1,4 @@
-<br><br>
+<!-- <br><br>
 <div class="container">
   <div *ngIf="user;else other_content">
     <h2>{{ user.name | uppercase }} Details</h2>
@@ -41,4 +41,15 @@
   <ng-template id="other_content">
     <div class="alert alert-danger">Unauthorized access</div>
   </ng-template>
-</div>
+</div> -->
+
+
+
+<div class="container">
+  <br>
+  <app-user-detail-item></app-user-detail-item>
+  <hr>
+  <h1>Assigned Tasks List</h1>
+  <app-assigned-tasks-container></app-assigned-tasks-container>
+
+ </div>

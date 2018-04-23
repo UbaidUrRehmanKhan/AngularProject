@@ -58,8 +58,7 @@ export class SecurityService {
 
   logout(): void {
     this.resetSecurityObject();
-    this.router.navigateByUrl('/login');
-  }
+    this.router.navigate(['']);  }
 
 
   getUserData(): Observable<AppUserAuth> {

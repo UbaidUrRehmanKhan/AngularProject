@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TASKS } from './mockTasks';
 
 @Component({
   selector: 'app-tasks-listing-container',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class TasksListingContainerComponent implements OnInit {
 
   constructor() { }
-
+  tasks = TASKS;
   ngOnInit() {
   }
 

@@ -1,0 +1,47 @@
+
+    <div class="card border-success mb-3" style="max-width: 100%;">
+        <div class="card-header">User Details</div>
+        <div class="card-body text-secondary">
+          <div class="card-text">
+              <div class="row">
+                  <div class="col-md-4"><b>User ID</b></div>
+                  <div class="col-md-3">{{user.id}}</div>
+                </div>
+              <div class="row">
+                  <div class="col-md-4"><b>User Name</b></div>
+                  <div class="col-md-3">{{user.name}}</div>
+                </div>
+
+              <div class="row">
+                <div class="col-md-4"><b>User E-mail</b></div>
+                <div class="col-md-3">{{user.email}}</div>
+              </div>
+
+              <div class="row">
+                  <div class="col-md-4"><b>User Role</b></div>
+                  <div class="col-md-3">Trainee Software Engineer</div>
+              </div>
+              <div class="row">
+                  <div class="col-md-4"><b>User Status</b></div>
+                  <div class="col-md-3"><span class="badge badge-danger">Inactive</span></div>
+                </div>
+              <div class="row">
+                  <div class="col-md-4"><b>On going Tasks</b></div>
+                  <div class="col-md-3"><span class="badge badge-warning">6</span></div>
+              </div>
+              <div class="row">
+                  <div class="col-md-4"><b>Completed Tasks</b></div>
+                  <div class="col-md-3"><span class="badge badge-info">6</span>
+                  </div>
+              </div>
+              <hr>
+              <div class="row" *ngIf="securityObject.isAdmin">
+                  <div class="col-md-1 offset-md-10">
+                    <a class="btn btn-info" routerLink="/userEditing">Edit Data</a>
+
+                  </div>
+              </div>
+            </div>
+        </div>
+      </div>
+
