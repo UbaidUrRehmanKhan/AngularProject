@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AppUserAuth } from '../../auth/login/appUserAuth';
+import { SecurityService } from '../../Security/security.service';
 
 
 @Component({
@@ -8,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserDashboardComponent implements OnInit {
 
+  securityObject: AppUserAuth = null;
 
 
-  constructor() {
+  constructor(private securityService: SecurityService) {
+    this.securityObject = securityService.securityObject;
 
   }
 
