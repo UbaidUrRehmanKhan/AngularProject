@@ -25,7 +25,6 @@ import { DashboardDirective } from './dashboard/dashboard.directive';
 import { TableComponent } from './users/users-listing-page/users-listing-page.component';
 import { UserDetailComponent } from './users/users-detail-page/user-detail-page.component';
 import { TasksListingContainerComponent } from './Tasks/tasks-listing-container/tasks-listing-container.component';
-
 import { EditUserPageComponent } from './users/edit-user-page/edit-user-page.component';
 import { TaskDetailComponentComponent } from './Tasks/task-detail-page/task-detail-component/task-detail-component.component';
 import { TaskDetailPageComponent } from './Tasks/task-detail-page/task-detail-page.component';
@@ -35,6 +34,9 @@ import { FeedbackListingContainerComponent } from './users/Feedback-Listing/feed
 import { NewfFeedbackItemComponent } from './users/Feedback-Listing/newf-feedback-item/newf-feedback-item.component';
 import { NewTaskPageComponent } from './Tasks/new-task-page/new-task-page.component';
 import { EditTaskPageComponent } from './Tasks/edit-task-page/edit-task-page.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { TaskAssigningComponent } from './Tasks/task-assigning/task-assigning.component';
+import { AssignedTaskDetailsPageComponent } from './users/assigned-task-details-page/assigned-task-details-page.component';
 
 export function tokenGetter() {
   return localStorage.getItem('bearerToken');
@@ -68,12 +70,16 @@ export function tokenGetter() {
     FeedbackListingContainerComponent,
     NewfFeedbackItemComponent,
     NewTaskPageComponent,
-    EditTaskPageComponent
+    EditTaskPageComponent,
+    TaskAssigningComponent,
+    AssignedTaskDetailsPageComponent,
+
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgSelectModule,
     FormsModule,
     HttpModule,
     HttpClientModule,

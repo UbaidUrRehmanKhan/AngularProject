@@ -4,6 +4,9 @@
       <tr>
         <th>ID</th>
         <th>Task Name</th>
+        <th>
+          Added By
+        </th>
         <th>Details</th>
       </tr>
     </thead>
@@ -11,8 +14,12 @@
         <tr *ngFor="let task of tasks">
             <td>{{task.id}}</td>
             <td>{{task.name}}</td>
+            <td>Ubaid Khan</td>
             <td>
-              <a routerLink="/tasks/1">View Description</a>
+              <!-- <a routerLink="/tasks/1">View Description</a> -->
+              <a href="javascript:void(0);" (click)="getUrl()">View Details</a>
+
+
             </td>
         </tr>
     </tbody>

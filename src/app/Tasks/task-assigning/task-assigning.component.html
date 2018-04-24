@@ -1,0 +1,10 @@
+<hr>
+<h1>Assigning Task to Users</h1>
+<ng-select
+[items]="users"
+[multiple]="true"
+[closeOnSelect]="false"
+bindLabel="name"
+placeholder="Select people"
+[(ngModel)]="selectedUsers">
+</ng-select>

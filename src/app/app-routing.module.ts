@@ -1,3 +1,4 @@
+import { AssignedTaskDetailsPageComponent } from './users/assigned-task-details-page/assigned-task-details-page.component';
 import { EditTaskPageComponent } from './Tasks/edit-task-page/edit-task-page.component';
 import { TaskDetailPageComponent } from './Tasks/task-detail-page/task-detail-page.component';
 import { TasksListingComponent } from './Tasks/tasks-listing-page/tasksListing-page.component';
@@ -31,12 +32,11 @@ const routes: Routes = [
   { path: 'userRegisteration', component: RegisterComponent, canActivate: [AuthGuard] },
   { path: 'userEditing', component: EditUserPageComponent, canActivate: [AuthGuard] },
   { path: 'users/:id', component: UserDetailComponent, canActivate: [AuthGuard ] },
-  { path: 'users/:id/userTasks/:id', component: TaskDetailPageComponent, canActivate: [AuthGuard ] },
-  { path: 'tasks/:id', component: TaskDetailComponentComponent, canActivate: [AuthGuard ] },
-  { path: 'dashboard/userTasks/:id', component: TaskDetailPageComponent, canActivate: [AuthGuard ] },
+  { path: 'users/:id/userTasks/:id', component: AssignedTaskDetailsPageComponent, canActivate: [AuthGuard ] },
+  { path: 'tasks/:id', component: TaskDetailPageComponent, canActivate: [AuthGuard ] },
+  { path: 'dashboard/userTasks/:id', component: AssignedTaskDetailsPageComponent, canActivate: [AuthGuard ] },
   { path: 'newTask', component: NewTaskPageComponent, canActivate: [AuthGuard ] },
   { path: 'editTask', component: EditTaskPageComponent, canActivate: [AuthGuard ] },
-
 
 
 ];

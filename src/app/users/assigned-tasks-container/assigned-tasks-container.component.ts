@@ -1,5 +1,7 @@
+import { SecurityService } from './../../Security/security.service';
 import { Component, OnInit } from '@angular/core';
 import { TASKS } from '../../Tasks/tasks-listing-container/mockTasks';
+import { AppUserAuth } from '../../auth/login/appUserAuth';
 
 @Component({
   selector: 'app-assigned-tasks-container',
@@ -7,8 +9,12 @@ import { TASKS } from '../../Tasks/tasks-listing-container/mockTasks';
   styleUrls: ['./assigned-tasks-container.component.css']
 })
 export class AssignedTasksContainerComponent implements OnInit {
+  securityObject: AppUserAuth = null;
 
-  constructor() { }
+
+  constructor(private securityService: SecurityService) {
+    this.securityObject = this.securityService.securityObject;
+   }
   tasks = TASKS;
   ngOnInit() {
   }

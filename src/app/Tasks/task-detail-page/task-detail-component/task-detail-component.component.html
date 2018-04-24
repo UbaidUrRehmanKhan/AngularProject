@@ -34,15 +34,20 @@
                 </div>
               <hr *ngIf="securityObject.isAdmin">
               <div class="row" *ngIf="securityObject.isAdmin">
-                  <div class="col-md-2 offset-md-8">
-                    <a class="btn btn-info" routerLink="/editTask">&nbsp;Edit Data&nbsp;</a>
+                  <div class="col-md-1 col-sm-1 offset-md-8 offset-sm-8">
+                    <a class="btn btn-info btn-sm" routerLink="/editTask">&nbsp;Edit Task&nbsp;</a>
 
                   </div>
-                  &nbsp;
-                  <div class="col-md-1">
-                      <a class="btn btn-danger" href="">Delete Task</a>
+
+                  <div class="col-md-1 col-sm-1 ">
+                      <a class="btn btn-danger btn-sm" href="#">Delete Task</a>
 
                     </div>
+                    &nbsp;&nbsp;
+                    <div class="col-md-1 col-sm-1 ">
+                        <a class="btn btn-success btn-sm" href="#">Mark as Completed</a>
+
+                      </div>
               </div>
 
             </div>
