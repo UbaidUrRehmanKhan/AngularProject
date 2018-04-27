@@ -1,3 +1,4 @@
+import { UserDetailItemComponent } from './user-detail-item/user-detail-item.component';
 import { UserService } from './../user-service.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { UserModel } from './../userModel';
@@ -13,20 +14,29 @@ import { SecurityService } from '../../Security/security.service';
 })
 export class UserDetailComponent implements OnInit {
 
-  //@Input() user: UserModel;
-  //users: UserModel[];
+
+  user: UserModel;
   securityObject: AppUserAuth = null;
+
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
     private location: Location,
     private securityService: SecurityService
   ) {
-    this.securityObject = securityService.securityObject;
-   }
+      this.securityObject = securityService.securityObject;
+
+    }
 
   ngOnInit() {
-    //this.getUser();
+    this.getUser();
+  }
+
+  getUser(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.userService.getUser(id)
+      .subscribe(user => this.user = user);
+
   }
 
   // getUser(): void {

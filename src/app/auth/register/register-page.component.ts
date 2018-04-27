@@ -1,8 +1,9 @@
+import { UserModelToRegister } from './UserModelToRegister';
 import { NgForm } from '@angular/forms';
-import { RegisterUserModel } from './registerUserModel';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SecurityService } from './../../Security/security.service';
 import { Component, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -11,8 +12,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
+  user: UserModelToRegister = new UserModelToRegister();
+  registerErrors =  null;
+  errorMessage = null;
+  successMessage = null;
+  // to be used for dynamic binding (currently not required)
+  roles = [
+    {value: 1, name: 'Admin'},
+    {value: 0, name: 'User'}
+  ];
 
-  user: RegisterUserModel = new RegisterUserModel();
 
   constructor(private securityService: SecurityService,
     private route: ActivatedRoute,
@@ -24,7 +33,31 @@ export class RegisterComponent implements OnInit {
 
 
 
-  register(): void {
-    this.router.navigate(['dashboard']);
+  register(f: NgForm): void {
+    this.registerErrors =  null;
+    this.errorMessage = null;
+    this.successMessage = null;
+    this.user.isActive = +this.user.isActive;
+    this.user.isAdmin = +this.user.isAdmin;
+    this.securityService.register(this.user).subscribe(
+      resp => {
+        console.log('Response in user creation ' + resp);
+        this.successMessage = 'User is added successfully.';
+        f.resetForm();
+      },
+      (err: HttpErrorResponse) => {
+        if (err.status === 422) {
+          console.log(err.error);
+          this.errorMessage =  'Whoops! Error in creating user..';
+        } else if (err.status === 500) {
+          console.log(err.error);
+          this.errorMessage =  'This E-mail is already taken.';
+        } else {
+          this.errorMessage = 'Woops! There is something wrong.';
+        }
+      }
+    );
+
+
   }
 }

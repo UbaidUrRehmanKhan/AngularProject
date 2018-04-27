@@ -4,7 +4,6 @@ import { TaskDetailPageComponent } from './Tasks/task-detail-page/task-detail-pa
 import { TasksListingComponent } from './Tasks/tasks-listing-page/tasksListing-page.component';
 import { EditUserPageComponent } from './users/edit-user-page/edit-user-page.component';
 import { RegisterComponent } from './auth/register/register-page.component';
-import { AdminCheckService } from './Security/admin-check.service';
 import { HomeComponent } from './home/home-page.component';
 import { LoginComponent } from './auth/login/login-page.component';
 import { UsersComponent } from './users/users.component';

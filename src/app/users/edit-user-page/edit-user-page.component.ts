@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RegisterUserModel } from '../../auth/register/registerUserModel';
+import { RegisteredUserModel } from '../../auth/register/registeredUserModel';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SecurityService } from './../../Security/security.service';
 @Component({
@@ -9,7 +9,7 @@ import { SecurityService } from './../../Security/security.service';
 })
 export class EditUserPageComponent implements OnInit {
 
-  user: RegisterUserModel = new RegisterUserModel();
+  user: RegisteredUserModel = new RegisteredUserModel();
 
   constructor(private securityService: SecurityService,
     private route: ActivatedRoute,

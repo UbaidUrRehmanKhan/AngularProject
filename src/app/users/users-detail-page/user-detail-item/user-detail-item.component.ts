@@ -6,6 +6,7 @@ import { AppUserAuth } from './../../../auth/login/appUserAuth';
 import { Component, OnInit, Input } from '@angular/core';
 import { UserModel } from '../../userModel';
 import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-detail-item',
@@ -14,14 +15,21 @@ import { Location } from '@angular/common';
 })
 export class UserDetailItemComponent implements OnInit {
 
-  user = USERS[1];
-
+  @Input() user: UserModel;
   securityObject: AppUserAuth = null;
-  constructor(private userService: UserService, private securityService: SecurityService) {
+  constructor(
+    private route: ActivatedRoute,
+    private userService: UserService,
+    private location: Location,
+    private securityService: SecurityService) {
     this.securityObject = securityService.securityObject;
   }
 
+
+
   ngOnInit() {
+
   }
+
 
 }

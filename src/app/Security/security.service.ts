@@ -1,3 +1,4 @@
+import { UserModelToRegister } from './../auth/register/UserModelToRegister';
 
 import { AppUserAuth } from './../auth/login/appUserAuth';
 import { Injectable } from '@angular/core';
@@ -12,13 +13,11 @@ import { Router } from '@angular/router';
 
 const helper = new JwtHelperService();
 const API_URL = 'http://example.com/api/';
-
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json'
   })
 };
-
 
 
 
@@ -43,7 +42,6 @@ export class SecurityService {
   login(entity: AppUser): Observable<AppUserAuth> {
     // Initialize security object
     this.resetSecurityObject();
-
     return this.http.post<AppUserAuth>(API_URL + 'login',
     entity, httpOptions).pipe(
         tap(resp => {
@@ -56,13 +54,24 @@ export class SecurityService {
 
   }
 
+
+  register(entity: UserModelToRegister): Observable<any> {
+    return this.http.post(API_URL + 'registerUser',
+    entity, httpOptions).pipe(
+        tap(resp => {
+          console.log('Response of User Creation in Security Service ' + resp);
+        }));
+
+
+  }
+
   logout(): void {
     this.resetSecurityObject();
     this.router.navigate(['']);  }
 
 
   getUserData(): Observable<AppUserAuth> {
-    console.log('inside getUser data function');
+    console.log('Inside getUser data function');
     return this.http.post<AppUserAuth>(API_URL + 'me', httpOptions).pipe(
         tap(resp => {
           Object.assign(this.securityObject, resp);

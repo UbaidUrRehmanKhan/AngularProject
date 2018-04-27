@@ -1,4 +1,4 @@
-export class RegisterUserModel {
+export class RegisteredUserModel {
   email = '';
   name = '';
   updated_at = '';

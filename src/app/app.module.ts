@@ -1,6 +1,6 @@
+import { AdminGuard } from './Security/admin.guard';
 import { UserDetailItemComponent } from './users/users-detail-page/user-detail-item/user-detail-item.component';
 import { TasksListingComponent } from './Tasks/tasks-listing-page/tasksListing-page.component';
-
 import { UserService } from './users/user-service.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -19,7 +19,6 @@ import { HttpModule } from '@angular/http';
 import { SecurityService } from './Security/security.service';
 import { AuthGuard } from './Security/auth.guard';
 import { HomeComponent } from './home/home-page.component';
-import { AdminCheckService } from './Security/admin-check.service';
 import { JwtModule } from '@auth0/angular-jwt';
 import { DashboardDirective } from './dashboard/dashboard.directive';
 import { TableComponent } from './users/users-listing-page/users-listing-page.component';
@@ -91,7 +90,7 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [SecurityService, AuthGuard, AdminCheckService, UserService],
+  providers: [SecurityService, AuthGuard, UserService, AdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

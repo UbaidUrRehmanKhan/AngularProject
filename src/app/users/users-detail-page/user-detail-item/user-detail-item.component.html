@@ -14,16 +14,28 @@
 
               <div class="row">
                 <div class="col-md-4"><b>User E-mail</b></div>
-                <div class="col-md-3">abc@abc.com</div>
+                <div class="col-md-3">{{user.email}}</div>
               </div>
 
               <div class="row">
                   <div class="col-md-4"><b>User Role</b></div>
-                  <div class="col-md-3">Trainee Software Engineer</div>
+                  <div class="col-md-3" *ngIf="user.isAdmin;else else_content">
+                    Admin
+                  </div>
+                  <ng-template #else_content>
+                      <div class="col-md-3">
+                          User
+                      </div>
+                  </ng-template>
               </div>
               <div class="row">
                   <div class="col-md-4"><b>User Status</b></div>
-                  <div class="col-md-3"><span class="badge badge-danger">Inactive</span></div>
+                  <div class="col-md-3">
+                    <span *ngIf="user.isActive;else other_content" class="badge badge-success">Active</span>
+                    <ng-template #other_content>
+                        <span class="badge badge-danger">Inactive</span>
+                    </ng-template>
+                  </div>
                 </div>
               <div class="row">
                   <div class="col-md-4"><b>On going Tasks</b></div>
