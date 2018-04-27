@@ -1,3 +1,4 @@
+import { UserModelToRegister } from './../auth/register/UserModelToRegister';
 import { UsersComponent } from './users.component';
 import { USERS } from './mock-users';
 import { Injectable } from '@angular/core';
@@ -59,6 +60,16 @@ export class UserService {
     return ['id', 'name', 'isActive'];
   }
 
+  // need to work on it
+  updateUser(entity: UserModelToRegister): Observable<any> {
+    return this.http.post(API_URL + 'registerUser',
+    entity, httpOptions).pipe(
+        tap(resp => {
+          console.log('Response of User Creation in Security Service ' + resp);
+        }));
+
+
+  }
 
 
 

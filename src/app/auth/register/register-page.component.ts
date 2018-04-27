@@ -13,7 +13,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class RegisterComponent implements OnInit {
 
   user: UserModelToRegister = new UserModelToRegister();
-  registerErrors =  null;
   errorMessage = null;
   successMessage = null;
   // to be used for dynamic binding (currently not required)
@@ -34,11 +33,9 @@ export class RegisterComponent implements OnInit {
 
 
   register(f: NgForm): void {
-    this.registerErrors =  null;
     this.errorMessage = null;
     this.successMessage = null;
-    this.user.isActive = +this.user.isActive;
-    this.user.isAdmin = +this.user.isAdmin;
+
     this.securityService.register(this.user).subscribe(
       resp => {
         console.log('Response in user creation ' + resp);
@@ -48,7 +45,7 @@ export class RegisterComponent implements OnInit {
       (err: HttpErrorResponse) => {
         if (err.status === 422) {
           console.log(err.error);
-          this.errorMessage =  'Whoops! Error in creating user..';
+          this.errorMessage =  'Whoops! Error in creating user...';
         } else if (err.status === 500) {
           console.log(err.error);
           this.errorMessage =  'This E-mail is already taken.';

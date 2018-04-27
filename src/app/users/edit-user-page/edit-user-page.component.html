@@ -16,7 +16,7 @@
                           <h3 class="mb-0">User Updation</h3>
                       </div>
                       <div class="card-body">
-                          <form class="form" role="form" #f="ngForm" (ngSubmit)= "userEditing()" autocomplete="off" id="formLogin" novalidate="" method="POST">
+                          <form class="form" role="form" #f="ngForm" (ngSubmit)= "userEditing(f)" autocomplete="off" id="formLogin" novalidate="" method="POST">
                               <div class="form-group">
                                   <label for="email">Email</label>
                                   <input class="form-control form-control-lg rounded-0" name="email" id="email"

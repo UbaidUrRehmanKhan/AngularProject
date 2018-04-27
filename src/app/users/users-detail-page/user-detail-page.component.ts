@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { AppUserAuth } from '../../auth/login/appUserAuth';
 import { SecurityService } from '../../Security/security.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-user-detail',
@@ -17,7 +18,7 @@ export class UserDetailComponent implements OnInit {
 
   user: UserModel;
   securityObject: AppUserAuth = null;
-
+  errorMessage: string;
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
@@ -25,32 +26,39 @@ export class UserDetailComponent implements OnInit {
     private securityService: SecurityService
   ) {
       this.securityObject = securityService.securityObject;
+      this.getUser();
 
     }
 
   ngOnInit() {
-    this.getUser();
-  }
-
-  getUser(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.userService.getUser(id)
-      .subscribe(user => this.user = user);
 
   }
 
   // getUser(): void {
   //   const id = +this.route.snapshot.paramMap.get('id');
-  //   this.userService.getUsers().subscribe(
-  //     resp => {this.users = resp;
-  //       console.log('Users List in user-detail' + this.users);
-  //       this.user = this.users.find(x => x.id === id);
-  //       console.log('Required User in user detail' + this.user);
-  //     },
-  //     () => {
-  //       console.log('error');
-  //     }
-  //   );
+  //   this.userService.getUser(id)
+  //     .subscribe(user => this.user = user);
+
   // }
+
+  getUser(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.userService.getUser(id).subscribe(
+      resp => {
+        console.log(resp);
+        this.user = resp;
+        console.log('fetching User: ' + this.user);
+      },
+      (err: HttpErrorResponse) => {
+        if (err.status === 404) {
+          this.errorMessage =  'No Data is found';
+        } else {
+          this.errorMessage = 'There is something wrong in fetching the data.';
+        }
+      }
+    );
+
+  }
+
 
 }

@@ -3,9 +3,16 @@
     <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">&laquo;&nbsp;Back</button>
   <br>
   <br>
+  <div class="row">
+      <div class="col-md-6 mx-auto">
+          <div class="alert alert-danger"
+            *ngIf="errorMessage">
+              <p><b>Error!</b> {{ errorMessage }}</p>
+          </div>
+      </div>
+  </div>
   <app-user-detail-item [user]="user" *ngIf="user"></app-user-detail-item>
-  <hr *ngIf="user">
-  <h1 *ngIf="user">Assigned Tasks List</h1>
-  <!-- <app-assigned-tasks-container></app-assigned-tasks-container> -->
- <app-tasks-listing-container></app-tasks-listing-container>
+  <hr *ngIf="user && !user.isAdmin">
+  <h1 *ngIf="user && !user.isAdmin">Assigned Tasks List</h1>
+ <app-tasks-listing-container *ngIf="user && !user.isAdmin"></app-tasks-listing-container>
  </div>
