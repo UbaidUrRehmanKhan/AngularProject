@@ -2,6 +2,8 @@ import { AdminGuard } from './Security/admin.guard';
 import { UserDetailItemComponent } from './users/users-detail-page/user-detail-item/user-detail-item.component';
 import { TasksListingComponent } from './Tasks/tasks-listing-page/tasksListing-page.component';
 import { UserService } from './users/user-service.service';
+import { TaskService } from './Tasks/task.service';
+
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -90,7 +92,7 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [SecurityService, AuthGuard, UserService, AdminGuard],
+  providers: [SecurityService, AuthGuard, UserService, AdminGuard, TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

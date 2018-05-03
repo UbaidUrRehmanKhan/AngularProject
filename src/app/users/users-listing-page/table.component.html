@@ -1,5 +1,7 @@
 
 <br>
+
+
 <table class="table table-stripped table-hover">
     <thead>
       <tr>
@@ -9,12 +11,12 @@
       </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let user of users" (click)="onSelect(user)" [class.selected]="user === selectedUser" >
+        <tr *ngFor="let user of users" >
             <td *ngFor="let col of columns">
 
                   <div *ngIf="col=='isActive' ;else else_content">
                       <div *ngIf="user[col]==true ;else other_content">
-                        <button class="btn btn-success btn-sm">
+                        <button class='btn btn-success btn-sm' (click)="onSelect(user,0)" >
                             &nbsp;Active&nbsp;
                         </button>
 
@@ -22,7 +24,7 @@
 
                       </div>
                       <ng-template #other_content>
-                          <button class="btn btn-danger btn-sm">
+                          <button class='btn btn-danger btn-sm' (click)="onSelect(user,1)">
                                 InActive
                            </button>
 
@@ -38,6 +40,9 @@
             </td>
          </tr>
     </tbody>
+
+
+
 
 
     <br>

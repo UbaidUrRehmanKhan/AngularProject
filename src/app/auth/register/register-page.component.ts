@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SecurityService } from './../../Security/security.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-register',
@@ -24,13 +25,16 @@ export class RegisterComponent implements OnInit {
 
   constructor(private securityService: SecurityService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private location: Location) { }
 
   ngOnInit() {
 
   }
 
-
+  goBack(): void {
+    this.location.back();
+  }
 
   register(f: NgForm): void {
     this.errorMessage = null;

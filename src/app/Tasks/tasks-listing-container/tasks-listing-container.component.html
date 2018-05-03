@@ -4,9 +4,6 @@
       <tr>
         <th>ID</th>
         <th>Task Name</th>
-        <th *ngIf="securityObject.isAdmin">
-          Added By
-        </th>
         <th *ngIf="!securityObject.isAdmin">Status</th>
         <th>Details</th>
         <td *ngIf="securityObject.isAdmin">Remove Task</td>
@@ -16,7 +13,6 @@
         <tr *ngFor="let task of tasks">
             <td>{{task.id}}</td>
             <td>{{task.name}}</td>
-            <td *ngIf="securityObject.isAdmin">Ubaid Khan</td>
             <td *ngIf="!securityObject.isAdmin"><span class="badge badge-success">Completed</span></td>
             <td>
               <!-- <a routerLink="/tasks/1">View Description</a> -->

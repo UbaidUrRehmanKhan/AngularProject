@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UserModel } from '../../userModel';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { UserModelToRegister } from '../../../auth/register/UserModelToRegister';
 
 @Component({
   selector: 'app-user-detail-item',

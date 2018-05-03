@@ -52,6 +52,7 @@ export class UserDetailComponent implements OnInit {
       (err: HttpErrorResponse) => {
         if (err.status === 404) {
           this.errorMessage =  'No Data is found';
+
         } else {
           this.errorMessage = 'There is something wrong in fetching the data.';
         }
@@ -60,5 +61,9 @@ export class UserDetailComponent implements OnInit {
 
   }
 
+
+  goBack(): void {
+    this.location.back();
+  }
 
 }

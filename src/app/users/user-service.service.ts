@@ -60,17 +60,25 @@ export class UserService {
     return ['id', 'name', 'isActive'];
   }
 
-  // need to work on it
-  updateUser(entity: UserModelToRegister): Observable<any> {
-    return this.http.post(API_URL + 'registerUser',
+
+  updateUser(entity: UserModel): Observable<any> {
+    return this.http.put(API_URL + 'updateUser',
     entity, httpOptions).pipe(
         tap(resp => {
-          console.log('Response of User Creation in Security Service ' + resp);
+          console.log('Response of User updation in user Service ' + resp);
         }));
 
 
   }
 
+  updateUserStatus(id: number, status: number): Observable<any> {
+    return this.http.put(API_URL + 'updateStatus/'  + id + '/' + status, httpOptions).pipe(
+        tap(resp => {
+          console.log('Response of User updation in user Service ' + resp.errorCode);
+        }));
+
+
+  }
 
 
   private handleError(error: Response) {
