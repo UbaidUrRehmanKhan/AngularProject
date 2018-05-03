@@ -41,4 +41,12 @@ export class TaskService {
         }));
   }
 
+  getTask(id: number): Observable<TaskModel> {
+    return this.http.get<TaskModel>(API_URL + 'getTask/' + id, httpOptions)
+    .pipe(
+        tap(resp => {
+            console.log('Fetched Task Data ' + resp);
+        }));
+  }
+
 }

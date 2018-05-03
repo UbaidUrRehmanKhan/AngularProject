@@ -6,19 +6,19 @@
         <th>Task Name</th>
         <th *ngIf="!securityObject.isAdmin">Status</th>
         <th>Details</th>
-        <td *ngIf="securityObject.isAdmin">Remove Task</td>
+        <td *ngIf="securityObject.isAdmin  && remove">Remove Task</td>
       </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let task of tasks">
+        <tr *ngFor="let task of tasksArray">
             <td>{{task.id}}</td>
             <td>{{task.name}}</td>
             <td *ngIf="!securityObject.isAdmin"><span class="badge badge-success">Completed</span></td>
             <td>
               <!-- <a routerLink="/tasks/1">View Description</a> -->
-              <a href="javascript:void(0);" (click)="getUrl()">View Details</a>
+              <a href="javascript:void(0);" (click)="getUrl(task.id)">View Details</a>
             </td>
-            <td *ngIf="securityObject.isAdmin">
+            <td *ngIf="securityObject.isAdmin && remove">
               <button class="btn btn-danger btn-sm">X</button>
             </td>
         </tr>

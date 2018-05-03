@@ -7,6 +7,8 @@ import { Location } from '@angular/common';
 import { AppUserAuth } from '../../auth/login/appUserAuth';
 import { SecurityService } from '../../Security/security.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { TaskModel } from '../../Tasks/taskModel';
+import { TaskService } from '../../Tasks/task.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -15,18 +17,22 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class UserDetailComponent implements OnInit {
 
-
+  tasks: TaskModel[];
   user: UserModel;
   securityObject: AppUserAuth = null;
   errorMessage: string;
+  remove: boolean;
+
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
     private location: Location,
-    private securityService: SecurityService
+    private securityService: SecurityService,
+    private taskService: TaskService
   ) {
       this.securityObject = securityService.securityObject;
       this.getUser();
+      this.getTasks();
 
     }
 
@@ -61,6 +67,18 @@ export class UserDetailComponent implements OnInit {
 
   }
 
+  getTasks(): void {
+    this.taskService.getTasks().subscribe(
+      resp => {
+        console.log(resp);
+        this.tasks = resp;
+        console.log('fetching all tasks in tasks list' + this.tasks);
+      },
+      () => {
+        console.log('error in displaying tasks list');
+      }
+    );
+  }
 
   goBack(): void {
     this.location.back();
