@@ -6,18 +6,18 @@
           <div class="card-text">
               <div class="row">
                   <div class="col-md-4"><b>Task ID</b></div>
-                  <div class="col-md-3">{{task.id}}</div>
+                  <div class="col-md-3">{{task?.id}}</div>
                 </div>
               <div class="row">
                   <div class="col-md-4"><b>Task Name</b></div>
-                  <div class="col-md-3">{{task.name}}</div>
+                  <div class="col-md-3">{{task?.name}}</div>
                 </div>
 
               <div class="row">
                   <div class="col-md-4"><b>Description</b></div>
                   <div class="col-md-8">
                     <p>
-                        {{task.description}}
+                        {{task?.description}}
                     </p>
                   </div>
                 </div>
@@ -32,7 +32,7 @@
 
                     </div>
                   <div class="col-md-1 col-sm-1 offset-md-8 offset-sm-8">
-                    <a class="btn btn-info btn-sm" routerLink="/editTask">&nbsp;Edit Task&nbsp;</a>
+                    <a class="btn btn-info btn-sm" routerLink="/tasks/{{task?.id}}/edit">&nbsp;Edit Task&nbsp;</a>
 
                   </div>
 

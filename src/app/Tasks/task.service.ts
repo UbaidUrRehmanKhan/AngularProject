@@ -29,6 +29,15 @@ export class TaskService {
 
   }
 
+  updateTask(entity: TaskModel): Observable<any> {
+    return this.http.put(API_URL + 'updateTask',
+    entity, httpOptions).pipe(
+        tap(resp => {
+          console.log('Response of Task updation in Task Service ' + resp);
+        }));
+
+
+  }
 
   // Getting Tasks with API
 

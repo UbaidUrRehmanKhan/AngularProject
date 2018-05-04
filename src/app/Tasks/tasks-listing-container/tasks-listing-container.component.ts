@@ -30,8 +30,9 @@ export class TasksListingContainerComponent implements OnInit {
   getUrl(id): void {
     console.log(id);
     console.log(this.router.url);
-    if (this.router.url === '/users/1' && this.securityObject.isAdmin) {
-      this.router.navigate(['users/:id/userTasks/:id']);
+    const userId = +this.router.url.substr(this.router.url.lastIndexOf('/') + 1);
+    if (this.router.url === '/users/' + userId && this.securityObject.isAdmin) {
+      this.router.navigate(['users/' + userId + '/userTasks/' + id]);
     } else if (this.router.url === '/tasks' && this.securityObject.isAdmin) {
       this.router.navigate(['/tasks/' + id]);
     } else if (!this.securityObject.isAdmin) {
