@@ -29,6 +29,27 @@ export class TaskService {
 
   }
 
+  assigningUsers(entity, id: any): Observable<any> {
+    console.log(entity);
+    return this.http.post(API_URL + 'assigningUsers/' + id,
+    JSON.stringify({'ids': entity}), httpOptions).pipe(
+        tap(resp => {
+          // console.log('Response of User Assignment in Task Service ' + resp);
+        }));
+
+
+  }
+
+
+  detachingUser(userId, taskId): Observable<any> {
+    return this.http.get(API_URL + 'detachingUser/' + userId + '/' + taskId, httpOptions).pipe(
+        tap(resp => {
+          // console.log('Response of User Assignment in Task Service ' + resp);
+        }));
+
+
+  }
+
   updateTask(entity: TaskModel): Observable<any> {
     return this.http.put(API_URL + 'updateTask',
     entity, httpOptions).pipe(
@@ -57,5 +78,14 @@ export class TaskService {
             console.log('Fetched Task Data ' + resp);
         }));
   }
+
+  deleteTask(id: number): Observable<any> {
+    return this.http.delete<any>(API_URL + 'deleteTask/' + id, httpOptions)
+    .pipe(
+        tap(resp => {
+            console.log('Task is Deleted. ');
+        }));
+  }
+
 
 }

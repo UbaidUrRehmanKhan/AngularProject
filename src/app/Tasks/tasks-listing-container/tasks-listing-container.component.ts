@@ -4,6 +4,8 @@ import { TASKS } from './mockTasks';
 import { Router } from '@angular/router';
 import { SecurityService } from '../../Security/security.service';
 import { AppUserAuth } from '../../auth/login/appUserAuth';
+import { TaskService } from '../task.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-tasks-listing-container',
@@ -11,28 +13,58 @@ import { AppUserAuth } from '../../auth/login/appUserAuth';
   styleUrls: ['./tasks-listing-container.component.css']
 })
 export class TasksListingContainerComponent implements OnInit {
-
+  errorMessage = '';
+  successMessage = '';
   securityObject: AppUserAuth;
   @Input() tasksArray: TaskModel[];
   @Input() remove: boolean;
+  userId: number;
   constructor(
     private router: Router,
-    private securityService: SecurityService) {
+    private securityService: SecurityService,
+    private taskService: TaskService,
+  ) {
     this.securityObject = this.securityService.securityObject;
   }
 
 
 
   ngOnInit() {
+    this.userId = +this.router.url.substr(this.router.url.lastIndexOf('/') + 1);
+
   }
+
+
+  removeTask(taskId): void {
+    console.log(taskId + '' + this.userId);
+    this.taskService.detachingUser(this.userId, taskId).subscribe(
+      resp => {
+        console.log(resp);
+        console.log('Task is detached from user.');
+      },
+      (err: HttpErrorResponse) => {
+        if (err.status === 404) {
+          this.errorMessage =  'No Data is found';
+
+        } else {
+          this.errorMessage = 'There is something wrong in processing the data.';
+        }
+      }
+    );
+
+  }
+
+
+
+
 
 
   getUrl(id): void {
     console.log(id);
     console.log(this.router.url);
-    const userId = +this.router.url.substr(this.router.url.lastIndexOf('/') + 1);
-    if (this.router.url === '/users/' + userId && this.securityObject.isAdmin) {
-      this.router.navigate(['users/' + userId + '/userTasks/' + id]);
+    this.userId = +this.router.url.substr(this.router.url.lastIndexOf('/') + 1);
+    if (this.router.url === '/users/' + this.userId && this.securityObject.isAdmin) {
+      this.router.navigate(['users/' + this.userId + '/userTasks/' + id]);
     } else if (this.router.url === '/tasks' && this.securityObject.isAdmin) {
       this.router.navigate(['/tasks/' + id]);
     } else if (!this.securityObject.isAdmin) {

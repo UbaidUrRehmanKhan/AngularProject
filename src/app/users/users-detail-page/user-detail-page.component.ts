@@ -22,7 +22,7 @@ export class UserDetailComponent implements OnInit {
   securityObject: AppUserAuth = null;
   errorMessage: string;
   remove: boolean;
-
+  id: number;
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
@@ -32,7 +32,7 @@ export class UserDetailComponent implements OnInit {
   ) {
       this.securityObject = securityService.securityObject;
       this.getUser();
-      this.getTasks();
+      this.getUserTasks();
 
     }
 
@@ -48,8 +48,8 @@ export class UserDetailComponent implements OnInit {
   // }
 
   getUser(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.userService.getUser(id).subscribe(
+    this.id = +this.route.snapshot.paramMap.get('id');
+    this.userService.getUser(this.id).subscribe(
       resp => {
         console.log(resp);
         this.user = resp;
@@ -67,8 +67,8 @@ export class UserDetailComponent implements OnInit {
 
   }
 
-  getTasks(): void {
-    this.taskService.getTasks().subscribe(
+  getUserTasks(): void {
+    this.userService.getUserTasks(this.id).subscribe(
       resp => {
         console.log(resp);
         this.tasks = resp;

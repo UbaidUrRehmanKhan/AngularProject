@@ -12,7 +12,11 @@
       </div>
   </div>
   <app-user-detail-item [user]="user" *ngIf="user"></app-user-detail-item>
-  <hr *ngIf="user && !user.isAdmin">
-  <h1 *ngIf="user && !user.isAdmin">Assigned Tasks List</h1>
- <app-tasks-listing-container *ngIf="user && !user.isAdmin" [tasksArray]="tasks" [remove]="true"></app-tasks-listing-container>
+
+<div *ngIf="tasks?.length>0">
+    <hr *ngIf="user && !user.isAdmin">
+    <h1 *ngIf="user && !user.isAdmin">Assigned Tasks List</h1>
+  <app-tasks-listing-container *ngIf="user && !user.isAdmin" [tasksArray]="tasks" [remove]="true"></app-tasks-listing-container>
+</div>
+
  </div>

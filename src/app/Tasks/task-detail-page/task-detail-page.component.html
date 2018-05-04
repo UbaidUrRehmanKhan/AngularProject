@@ -4,6 +4,6 @@
     <br>
   <app-task-detail-component [task]="achievedTask"></app-task-detail-component>
 
- <app-task-assigning *ngIf="securityObject.isAdmin"></app-task-assigning>
+ <app-task-assigning *ngIf="securityObject.isAdmin" [task]="achievedTask"></app-task-assigning>
 
 </div>

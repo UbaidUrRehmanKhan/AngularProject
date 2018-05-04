@@ -10,6 +10,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { HttpClient} from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { UrlSegment } from '@angular/router';
+import { TaskModel } from '../Tasks/taskModel';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization' : 'Bearer ' + localStorage.getItem('bearerToken')}),
@@ -31,7 +32,7 @@ export class UserService {
     .pipe(
         tap(resp => {
             this.users = resp;
-            console.log('users after assigning' + this.users);
+            console.log('users after retrieving: ' + this.users);
         }));
   }
 
@@ -85,5 +86,13 @@ export class UserService {
     return Observable.throw(error.statusText);
   }
 
+
+  getUserTasks($id): Observable<TaskModel[]> {
+    return this.http.get<TaskModel[]>(API_URL + 'user/' + $id + '/tasks', httpOptions)
+    .pipe(
+        tap(resp => {
+            console.log('Tasks after assigning' + resp);
+        }));
+  }
 
 }

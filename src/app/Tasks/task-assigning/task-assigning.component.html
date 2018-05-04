@@ -1,10 +1,38 @@
-<hr>
-<h1>Assigning Task to Users</h1>
-<ng-select
-[items]="users"
-[multiple]="true"
-[closeOnSelect]="false"
-bindLabel="name"
-placeholder="Select people"
-[(ngModel)]="selectedUsers">
-</ng-select>
+
+<div class=" card">
+  <div class="card-header"><h1>Assigning Task to Users</h1></div>
+  <div class="card-body">
+    <p class="card-text">
+      <ng-select
+        [items]="users"
+        [multiple]="true"
+        [closeOnSelect]="false"
+        bindLabel="name"
+        placeholder="Select people"
+        [(ngModel)]="selectedUsers">
+      </ng-select>
+    </p>
+    <hr>
+    <div class="col-md-2 offset-md-10">
+      <button  class="btn btn-success btn-lg float-right" id="btnSave" (click)='onSubmit()'>Save</button>
+    </div>
+  </div>
+
+</div>
+<br>
+<div class="row">
+  <div class="col-md-6 mx-auto">
+      <div class="alert alert-danger"
+        *ngIf="errorMessage">
+          <p><b>Error!</b> {{ errorMessage }}</p>
+      </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 mx-auto">
+      <div class="alert alert-success"
+        *ngIf="successMessage">
+          <p><b>{{successMessage}}</b></p>
+      </div>
+  </div>
+</div>

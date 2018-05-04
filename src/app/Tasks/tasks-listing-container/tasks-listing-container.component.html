@@ -15,11 +15,10 @@
             <td>{{task.name}}</td>
             <td *ngIf="!securityObject.isAdmin"><span class="badge badge-success">Completed</span></td>
             <td>
-              <!-- <a routerLink="/tasks/1">View Description</a> -->
               <a href="javascript:void(0);" (click)="getUrl(task.id)">View Details</a>
             </td>
             <td *ngIf="securityObject.isAdmin && remove">
-              <button class="btn btn-danger btn-sm">X</button>
+              <button class="btn btn-danger btn-sm" (click)="removeTask(task.id)">X</button>
             </td>
         </tr>
     </tbody>
