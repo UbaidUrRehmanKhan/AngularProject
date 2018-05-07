@@ -1,15 +1,15 @@
     <div class="list-group-item">
         <div class=" card">
             <div class="card-body">
-              <h5 class="card-title">PHP</h5>
-              <p class="card-text">Completed 3 modules</p>
+              <p class="card-text"> {{feedback.description}}</p>
 
             </div>
             <div class="card-footer text-muted">
-              2 days ago
+              <b>Created At: </b>{{feedback.created_at}}
               <div *ngIf="!securityObject.isAdmin">
                   <div class="col-md-2 offset-md-10">
-                      <button class="btn btn-danger btn-small">Delete Feedback</button>
+                      <a href="javascript:void(0);" class="btn btn-danger btn-sm" (click)="onDelete(feedback?.id)">Delete Feedback</a>
+
                   </div>
               </div>
             </div>

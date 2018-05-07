@@ -1,12 +1,13 @@
 import { FeedbackService } from './../feedback.service';
 import { FeedbackModelToRegister } from './../feedbackModelToRegister';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { UserService } from '../../user-service.service';
 import { SecurityService } from '../../../Security/security.service';
 import { AppUserAuth } from '../../../auth/login/appUserAuth';
 import { NgForm } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FeedbackModel } from '../feedbackModel';
 
 @Component({
   selector: 'app-newf-feedback-item',
@@ -14,6 +15,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./newf-feedback-item.component.css']
 })
 export class NewfFeedbackItemComponent implements OnInit {
+  @Output() newFeedbackObj = new EventEmitter<FeedbackModel>();
   securityObject: AppUserAuth = null;
   successMessage = '';
   errorMessage = '';
@@ -39,7 +41,8 @@ export class NewfFeedbackItemComponent implements OnInit {
     console.log(userId);
     this.feedbackService.newFeedbackItem(this.feedbackItem, userId, id).subscribe(
       resp => {
-        console.log('Response in feedback creation ' + resp);
+        console.log(resp);
+        this.newFeedbackObj.emit(resp);
         this.successMessage = 'Thank you for your Feedback.';
         f.resetForm();
       },

@@ -4,7 +4,7 @@
     <br>
     <app-task-detail-component [task]="achievedTask"></app-task-detail-component>
 
-    <app-newf-feedback-item ></app-newf-feedback-item>
+    <app-newf-feedback-item  (newFeedbackObj)="fetchingFeedback($event)"></app-newf-feedback-item>
     <hr>
     <h1>Feedback Record</h1>
     <app-feedback-listing-container></app-feedback-listing-container>

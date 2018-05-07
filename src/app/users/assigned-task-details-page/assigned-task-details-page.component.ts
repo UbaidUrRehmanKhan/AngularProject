@@ -1,3 +1,5 @@
+import { FeedbackListingContainerComponent } from './../Feedback-Listing/feedback-listing-container/feedback-listing-container.component';
+import { FeedbackModel } from './../Feedback-Listing/feedbackModel';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TaskModel } from '../../Tasks/taskModel';
@@ -6,6 +8,8 @@ import { TaskService } from '../../Tasks/task.service';
 import { Location } from '@angular/common';
 import { UserService } from '../user-service.service';
 import { SecurityService } from '../../Security/security.service';
+import { AfterViewInit, ViewChild } from '@angular/core';
+
 @Component({
   selector: 'app-assigned-task-details-page',
   templateUrl: './assigned-task-details-page.component.html',
@@ -13,7 +17,8 @@ import { SecurityService } from '../../Security/security.service';
 })
 export class AssignedTaskDetailsPageComponent implements OnInit {
 
-
+  @ViewChild(FeedbackListingContainerComponent)
+  private feedbackContainer: FeedbackListingContainerComponent;
   achievedTask: TaskModel;
   errorMessage = '';
   successMessage = '';
@@ -53,6 +58,13 @@ export class AssignedTaskDetailsPageComponent implements OnInit {
       }
     );
 
+  }
+
+
+
+  fetchingFeedback(feedbackObj: FeedbackModel): void {
+    console.log(feedbackObj);
+    this.feedbackContainer.feedbacksList.push(feedbackObj);
   }
 
 }

@@ -25,4 +25,24 @@ export class FeedbackService {
 
 
   }
+
+
+  veiwFeedbacks( userId, id): Observable<any> {
+    return this.http.get(API_URL + 'viewFeedbacks/' + userId + '/' + id,
+     httpOptions).pipe(
+        tap(resp => {
+          console.log( resp);
+        }));
+
+
+  }
+
+
+  deleteFeedback(id: number): Observable<any> {
+    return this.http.delete<any>(API_URL + 'deleteFeedback/' + id, httpOptions)
+    .pipe(
+        tap(resp => {
+            console.log('Feedback is Deleted. ');
+        }));
+  }
 }
