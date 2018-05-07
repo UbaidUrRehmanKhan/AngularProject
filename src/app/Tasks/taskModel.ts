@@ -5,5 +5,6 @@ export class TaskModel {
   updated_at = '';
   created_at = '';
   deleted_at = '';
+  status = 0;
 
 }

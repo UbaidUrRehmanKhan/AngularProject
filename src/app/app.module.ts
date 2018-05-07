@@ -1,3 +1,4 @@
+import { FeedbackService } from './users/Feedback-Listing/feedback.service';
 import { AdminGuard } from './Security/admin.guard';
 import { UserDetailItemComponent } from './users/users-detail-page/user-detail-item/user-detail-item.component';
 import { TasksListingComponent } from './Tasks/tasks-listing-page/tasksListing-page.component';
@@ -92,7 +93,7 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [SecurityService, AuthGuard, UserService, AdminGuard, TaskService],
+  providers: [SecurityService, AuthGuard, UserService, AdminGuard, TaskService, FeedbackService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

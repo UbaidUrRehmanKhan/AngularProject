@@ -67,8 +67,8 @@ export class TasksListingContainerComponent implements OnInit {
       this.router.navigate(['users/' + this.userId + '/userTasks/' + id]);
     } else if (this.router.url === '/tasks' && this.securityObject.isAdmin) {
       this.router.navigate(['/tasks/' + id]);
-    } else if (!this.securityObject.isAdmin) {
-      this.router.navigate(['users/1/userTasks/1']);
+    } else if (!this.securityObject.isAdmin && this.router.url === '/dashboard') {
+      this.router.navigate(['users/' + this.securityObject.id + '/userTasks/' + id]);
     }
   }
 }

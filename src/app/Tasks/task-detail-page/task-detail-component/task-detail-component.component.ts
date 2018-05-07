@@ -51,4 +51,27 @@ export class TaskDetailComponentComponent implements OnInit {
 
   }
 
+
+  updateTaskStatus(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    console.log(id);
+    const userId = +this.route.snapshot.paramMap.get('userId');
+    console.log(userId);
+    this.taskService.updateTaskStatus(userId, id).subscribe(
+      resp => {
+        console.log(resp);
+        this.task.status = 1;
+      },
+      (err: HttpErrorResponse) => {
+        if (err.status === 404) {
+          this.errorMessage =  'No Data is found';
+
+        } else {
+          this.errorMessage = 'There is something wrong in updating the data.';
+        }
+      }
+    );
+
+  }
+
 }

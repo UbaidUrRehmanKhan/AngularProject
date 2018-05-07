@@ -3,15 +3,34 @@
 <br *ngIf="!securityObject.isAdmin">
 <div class="container" *ngIf="!securityObject.isAdmin">
   <h1>Give Feedback</h1>
+  <form class="form" role="form" #f="ngForm" (ngSubmit)= "newFeedback(f)" autocomplete="off" id="formFeedback" novalidate="" method="POST">
+
     <div class="row" id="postEnteringRow">
         <div class="col-md-10">
          <div class="form-group">
-              <textarea class="form-control my-2 my-sm-1" rows="4"  Placeholder="Whats have you done so far?...."></textarea>
+              <textarea class="form-control my-2 my-sm-1" rows="4" name="description"  Placeholder="What have you done so far?...." [(ngModel)]="feedbackItem.description" #email="ngModel"></textarea>
          </div>
         </div>
         <div class="col-md-1 col-sm-12">
             <button class="btn btn-lg btn-dark my-2 my-sm-1" type="submit" id="saveBtn">Save</button>
         </div>
-      </div>
 
+    </div>
+  </form>
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="alert alert-danger"
+              *ngIf="errorMessage">
+                <p>{{ errorMessage }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="alert alert-success"
+              *ngIf="successMessage">
+                <p><b>{{successMessage}}</b></p>
+            </div>
+        </div>
+    </div>
 </div>

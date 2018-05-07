@@ -39,11 +39,11 @@
                 </div>
               <div class="row" *ngIf="!user.isAdmin">
                   <div class="col-md-4"><b>On going Tasks</b></div>
-                  <div class="col-md-3"><span class="badge badge-warning">6</span></div>
+                  <div class="col-md-3"><span class="badge badge-warning">{{user.taskOngoing}}</span></div>
               </div>
               <div class="row" *ngIf="!user.isAdmin">
                   <div class="col-md-4"><b>Completed Tasks</b></div>
-                  <div class="col-md-3"><span class="badge badge-info">6</span>
+                  <div class="col-md-3"><span class="badge badge-info">{{user.taskCompleted}}</span>
                   </div>
               </div>
               <hr>

@@ -13,7 +13,10 @@
         <tr *ngFor="let task of tasksArray">
             <td>{{task.id}}</td>
             <td>{{task.name}}</td>
-            <td *ngIf="!securityObject.isAdmin"><span class="badge badge-success">Completed</span></td>
+            <td *ngIf="!securityObject.isAdmin">
+              <span class="badge badge-success" *ngIf="task.status;else other_content">Completed</span>
+              <ng-template #other_content><span class="badge badge-warning">Ongoing</span></ng-template>
+            </td>
             <td>
               <a href="javascript:void(0);" (click)="getUrl(task.id)">View Details</a>
             </td>

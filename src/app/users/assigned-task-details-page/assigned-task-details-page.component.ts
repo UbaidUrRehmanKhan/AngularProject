@@ -25,17 +25,23 @@ export class AssignedTaskDetailsPageComponent implements OnInit {
   private securityService: SecurityService) { }
 
   ngOnInit() {
-    this.getTask();
+    this.getUserTask();
   }
 
-  getTask(): void {
+
+  goBack(): void {
+    this.location.back();
+  }
+  getUserTask(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     console.log(id);
-    this.taskService.getTask(id).subscribe(
+    const userId = +this.route.snapshot.paramMap.get('userId');
+    console.log(userId);
+    this.taskService.getUserTask(userId, id).subscribe(
       resp => {
         console.log(resp);
         this.achievedTask = resp;
-        console.log('fetching Task: ' + this.achievedTask);
+        console.log(this.achievedTask);
       },
       (err: HttpErrorResponse) => {
         if (err.status === 404) {

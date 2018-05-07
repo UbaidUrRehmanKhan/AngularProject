@@ -22,15 +22,16 @@
                   </div>
                 </div>
               <hr>
-              <div class="col-md-1 col-sm-1 " *ngIf="!securityObject.isAdmin">
-                <a class="btn btn-success btn-sm" href="#">Mark as Completed</a>
+              <div class="row" *ngIf="!securityObject.isAdmin">
+                <div class="col-md-1 col-sm-1 offset-md-9 offset-sm-9">
+                  <button type="button"  [disabled]="task.status" class="btn btn-success btn-xs" (click)="updateTaskStatus()">Mark as Completed</button>
+                </div>
+
 
               </div>
-              <div class="row" *ngIf="securityObject.isAdmin">
-                  <div class="col-md-1 col-sm-1 offset-md-8 offset-sm-8" *ngIf="!securityObject.isAdmin">
-                      <a class="btn btn-success btn-sm" href="#">Mark as Completed</a>
 
-                    </div>
+              <div class="row" *ngIf="securityObject.isAdmin">
+
                   <div class="col-md-1 col-sm-1 offset-md-8 offset-sm-8">
                     <a class="btn btn-info btn-sm" routerLink="/tasks/{{task?.id}}/edit">&nbsp;Edit Task&nbsp;</a>
 
@@ -38,12 +39,24 @@
 
                   <div class="col-md-1 col-sm-1 ">
                       <a href="javascript:void(0);" class="btn btn-danger btn-sm" (click)="onDelete(task?.id)">Delete Task</a>
-
                     </div>
-
-
               </div>
-
+              <br>
+              <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <div class="alert alert-danger"
+                      *ngIf="errorMessage">
+                        <p><b>Error!</b> {{ errorMessage }}</p>
+                    </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-success" *ngIf="task.status">
+                        <p><b>Congrats!</b> You have completed this task.</p>
+                    </div>
+                </div>
+              </div>
             </div>
         </div>
       </div>

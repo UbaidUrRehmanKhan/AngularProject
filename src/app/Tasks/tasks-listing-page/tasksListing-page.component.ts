@@ -1,7 +1,8 @@
 import { TaskService } from './../task.service';
 import { Component, OnInit } from '@angular/core';
 import { TaskModel } from '../taskModel';
-
+import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-tasks-listing',
   templateUrl: './tasks-listing.component.html',
@@ -10,7 +11,7 @@ import { TaskModel } from '../taskModel';
 export class TasksListingComponent implements OnInit {
 
   tasks: TaskModel[];
-  constructor(private taskService: TaskService) { }
+  constructor(private taskService: TaskService, private location: Location) { }
   remove: boolean;
   ngOnInit() {
     this.getTasks();
@@ -29,6 +30,12 @@ export class TasksListingComponent implements OnInit {
         console.log('error in displaying tasks list');
       }
     );
+  }
+
+
+  goBack(): void {
+    console.log('clicked');
+    this.location.back();
   }
 
 }
