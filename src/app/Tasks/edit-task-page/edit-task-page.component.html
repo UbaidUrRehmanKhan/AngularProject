@@ -29,10 +29,10 @@
                     <!-- form card login -->
                     <div class="card rounded-0">
                         <div class="card-header">
-                            <h3 class="mb-0">Update Task</h3>
+                            <h3 class="mb-0">{{pageHeading}}</h3>
                         </div>
                         <div class="card-body">
-                            <form class="form" role="form" #f="ngForm" (ngSubmit)= "updateTask(f)" autocomplete="off" id="formLogin" novalidate="" method="POST">
+                            <form class="form" role="form" #f="ngForm" (ngSubmit)= "saveTask(f)" autocomplete="off" id="formLogin" novalidate="" method="POST">
 
 
                                   <div class="form-group">

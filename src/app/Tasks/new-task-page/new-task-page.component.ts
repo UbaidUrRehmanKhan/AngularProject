@@ -15,10 +15,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class NewTaskPageComponent implements OnInit {
 
-  task: TaskModelToRegister = new TaskModelToRegister();
+  task: TaskModel = new TaskModel();
   errorMessage = null;
   successMessage = null;
-  tasks: TaskModel;
 
   constructor(private taskService: TaskService,
     private route: ActivatedRoute,
