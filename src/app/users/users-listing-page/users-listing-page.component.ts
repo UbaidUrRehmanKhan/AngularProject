@@ -9,7 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
-  status = false;
+
   selectedUser: UserModel;
   users: UserModel[];
   columns: string[];
@@ -42,7 +42,6 @@ export class TableComponent implements OnInit {
     this.userDataService.updateUserStatus(this.selectedUser.id, roleStatus).subscribe(
       resp => {
         console.log('Response in user updation ' + resp);
-        this.status = !this.status;
       },
       (err: HttpErrorResponse) => {
         if (err.status === 304) {

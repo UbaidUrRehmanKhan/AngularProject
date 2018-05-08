@@ -1,3 +1,3 @@
 <div class="list-group">
-   <app-feedback-item *ngFor="let feedback of feedbacksList" [feedback]="feedback"></app-feedback-item>
+   <app-feedback-item *ngFor="let feedback of feedbacksList" [feedback]="feedback" (itemDeleted)="onItemDeleted(i)"></app-feedback-item>
  </div>

@@ -1,5 +1,5 @@
 import { TaskModel } from './../taskModel';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TASKS } from './mockTasks';
 import { Router } from '@angular/router';
 import { SecurityService } from '../../Security/security.service';
@@ -18,6 +18,8 @@ export class TasksListingContainerComponent implements OnInit {
   securityObject: AppUserAuth;
   @Input() tasksArray: TaskModel[];
   @Input() remove: boolean;
+  @Output() itemDeleted = new EventEmitter<{index: number}>();
+
   userId: number;
   constructor(
     private router: Router,
@@ -40,6 +42,7 @@ export class TasksListingContainerComponent implements OnInit {
     this.taskService.detachingUser(this.userId, taskId).subscribe(
       resp => {
         console.log(resp);
+        this.itemDeleted.emit(taskId);
         console.log('Task is detached from user.');
       },
       (err: HttpErrorResponse) => {

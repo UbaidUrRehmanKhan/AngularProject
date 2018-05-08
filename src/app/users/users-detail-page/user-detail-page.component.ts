@@ -84,4 +84,9 @@ export class UserDetailComponent implements OnInit {
     this.location.back();
   }
 
+
+  onItemDeleted(index) {
+    this.tasks.splice(index, 1);
+  }
+
 }

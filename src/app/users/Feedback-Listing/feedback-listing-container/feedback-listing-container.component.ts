@@ -35,5 +35,9 @@ export class FeedbackListingContainerComponent implements OnInit {
     );
   }
 
-
+  onItemDeleted(index) {
+    this.feedbacksList.splice(index, 1);
+  }
 }
+
+

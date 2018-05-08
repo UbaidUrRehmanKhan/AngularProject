@@ -1,6 +1,6 @@
 import { FeedbackService } from './../feedback.service';
 import { FeedbackModel } from './../feedbackModel';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AppUserAuth } from '../../../auth/login/appUserAuth';
 import { UserService } from '../../user-service.service';
 import { SecurityService } from '../../../Security/security.service';
@@ -14,6 +14,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class FeedbackItemComponent implements OnInit {
   securityObject: AppUserAuth = null;
   @Input() feedback: FeedbackModel;
+  @Output() itemDeleted = new EventEmitter<{index: number}>();
   errorMessage = '';
   constructor(private userService: UserService,
     private securityService: SecurityService, private feedbackService: FeedbackService) { }
@@ -28,6 +29,7 @@ export class FeedbackItemComponent implements OnInit {
 
     this.feedbackService.deleteFeedback(id).subscribe(
       resp => {
+        this.itemDeleted.emit(id);
         console.log(resp);
       },
       (err: HttpErrorResponse) => {
