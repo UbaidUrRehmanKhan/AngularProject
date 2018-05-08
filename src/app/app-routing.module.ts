@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'users/:id', component: UserDetailComponent, canActivate: [AuthGuard ] },
   { path: 'users/:userId/userTasks/:id', component: AssignedTaskDetailsPageComponent, canActivate: [AuthGuard ] },
   { path: 'tasks/:id', component: TaskDetailPageComponent, canActivate: [AuthGuard ] },
-  { path: 'dashboard/userTasks/:id', component: AssignedTaskDetailsPageComponent, canActivate: [AuthGuard ] },
+  { path: 'dashboard/userTasks/:id', component: AssignedTaskDetailsPageComponent, canActivate: [AuthGuard] },
   { path: 'task', component: EditTaskPageComponent, canActivate: [AuthGuard ] },
   { path: 'tasks/:id/edit', component: EditTaskPageComponent, canActivate: [AuthGuard ] },
   // { path: 'users/:id/userTasks/:id', component: AssignedTaskDetailsPageComponent, canActivate: [AuthGuard ] },
