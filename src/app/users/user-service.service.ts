@@ -47,8 +47,8 @@ export class UserService {
 
 
   // get single user data
-  getUser(id: number): Observable<UserModel> {
-    return this.http.get<UserModel>(API_URL + 'user/' + id, httpOptions)
+  getUser(id: number): Observable<UserModelToRegister> {
+    return this.http.get<UserModelToRegister>(API_URL + 'user/' + id, httpOptions)
     .pipe(
         tap(resp => {
             console.log('Fetched User Data ' + resp);
@@ -62,7 +62,7 @@ export class UserService {
 
 
   // updating the data of a user
-  updateUser(entity: UserModel): Observable<any> {
+  updateUser(entity: UserModelToRegister): Observable<any> {
     return this.http.put(API_URL + 'updateUser',
     entity, httpOptions).pipe(
         tap(resp => {

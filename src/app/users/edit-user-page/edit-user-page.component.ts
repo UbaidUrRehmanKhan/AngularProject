@@ -13,7 +13,7 @@ import { UserModel } from '../userModel';
   styleUrls: ['./edit-user-page.component.css']
 })
 export class EditUserPageComponent implements OnInit {
-  @Input() user: UserModel; // user model is used to map the retireved user data (expectedly, here @Input() has no usage)
+  user: UserModelToRegister; // user model is used to map the retireved user data (expectedly, here @Input() has no usage)
   // user is received form API rather than any parent component
   errorMessage = null;
   successMessage = null;

@@ -1,3 +1,4 @@
+import { UserModelToRegister } from './../../auth/register/UserModelToRegister';
 import { UserDetailItemComponent } from './user-detail-item/user-detail-item.component';
 import { UserService } from './../user-service.service';
 import { Component, OnInit, Input } from '@angular/core';
@@ -18,7 +19,7 @@ import { TaskService } from '../../Tasks/task.service';
 export class UserDetailComponent implements OnInit {
 
   tasks: TaskModel[];
-  user: UserModel;
+  user: UserModelToRegister;
   securityObject: AppUserAuth = null;
   errorMessage: string;
   remove: boolean;

@@ -20,6 +20,7 @@ export class EditTaskPageComponent implements OnInit {
   task: TaskModel;
   newTaskMode = false;
   pageHeading = '';
+
   constructor(private taskService: TaskService,
     private route: ActivatedRoute,
     private router: Router,
