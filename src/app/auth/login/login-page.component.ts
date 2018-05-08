@@ -12,8 +12,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  securityObject: AppUserAuth;
-  user: AppUser = new AppUser();
+  securityObject: AppUserAuth; // to store the retieved user object after successful login
+  user: AppUser = new AppUser(); // to get the credentials of user in login form
   SecurityObject: AppUserAuth = null;
   returnUrl: string;
 
@@ -41,6 +41,9 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+
+  // it is used that if some one tries to enter any url and user is not logged in, so we will redirect to that url
+  // right after login
 
   ngOnInit() {
     this.returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');

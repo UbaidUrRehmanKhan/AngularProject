@@ -12,12 +12,11 @@ import { TaskModel } from '../../Tasks/taskModel';
 })
 export class UserDashboardComponent implements OnInit {
 
+  // It is the starter page/dashboard for a user after login
   tasks: TaskModel[];
   securityObject: AppUserAuth = null;
-
-
-  constructor(private securityService: SecurityService, private taskService: TaskService,
-    ) {
+  constructor(private securityService: SecurityService,
+     private taskService: TaskService ) {
     this.securityObject = securityService.securityObject;
 
   }
@@ -26,7 +25,7 @@ export class UserDashboardComponent implements OnInit {
     this.getTasks();
   }
 
-
+  // getting all the tasks for the logged in user
   getTasks(): void {
     this.taskService.getUserTasks().subscribe(
       resp => {

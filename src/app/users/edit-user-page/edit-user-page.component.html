@@ -41,10 +41,10 @@
                                   <br>
                                   <div *ngIf="email.invalid && (email.dirty || email.touched)"
                                     class="alert alert-danger">
-                                    <div *ngIf="email.errors.required">
+                                    <div *ngIf="email?.errors.required">
                                       Email is required.
                                     </div>
-                                    <div *ngIf="email.errors.email">
+                                    <div *ngIf="email?.errors.email">
                                       Invalid Email
                                     </div>
                                   </div>
@@ -57,7 +57,7 @@
                                   <br>
                                   <div *ngIf="(name.dirty || name.touched) &&  name.invalid"
                                     class="alert alert-danger">
-                                    <div *ngIf="name.errors.required">
+                                    <div *ngIf="name?.errors.required">
                                       Name is required.
                                     </div>
                                   </div>

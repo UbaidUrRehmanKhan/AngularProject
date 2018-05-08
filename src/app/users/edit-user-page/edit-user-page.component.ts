@@ -13,7 +13,8 @@ import { UserModel } from '../userModel';
   styleUrls: ['./edit-user-page.component.css']
 })
 export class EditUserPageComponent implements OnInit {
-  @Input() user: UserModel;
+  @Input() user: UserModel; // user model is used to map the retireved user data (expectedly, here @Input() has no usage)
+  // user is received form API rather than any parent component
   errorMessage = null;
   successMessage = null;
 
@@ -28,6 +29,8 @@ export class EditUserPageComponent implements OnInit {
     this.getUser();
   }
 
+
+  // getting the data of a single user
   getUser(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.userService.getUser(id)
@@ -54,11 +57,13 @@ export class EditUserPageComponent implements OnInit {
       );
   }
 
+  // back button
   goBack(): void {
     this.location.back();
   }
 
 
+  // user updation function that interacts with Laravel API
   userEditing(f: NgForm): void {
     this.errorMessage = null;
     this.successMessage = null;

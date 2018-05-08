@@ -34,6 +34,8 @@ export class TaskDetailPageComponent implements OnInit {
     this.location.back();
   }
 
+
+  // fetching the detail of a task
   getTask(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     console.log(id);

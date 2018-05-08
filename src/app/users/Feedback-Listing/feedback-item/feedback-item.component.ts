@@ -14,7 +14,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class FeedbackItemComponent implements OnInit {
   securityObject: AppUserAuth = null;
   @Input() feedback: FeedbackModel;
-  @Output() itemDeleted = new EventEmitter<{index: number}>();
+  @Output() itemDeleted = new EventEmitter<{index: number}>(); // to send the id of deleted item to parent so that it must
+                                                              // be removed from the list
+
   errorMessage = '';
   constructor(private userService: UserService,
     private securityService: SecurityService, private feedbackService: FeedbackService) { }
@@ -23,6 +25,7 @@ export class FeedbackItemComponent implements OnInit {
     this.securityObject = this.securityService.securityObject;
   }
 
+  // deletion of a feedback
   onDelete(id): void {
     this.errorMessage = '';
     console.log(id);

@@ -27,6 +27,7 @@ export class TaskService {
      }
 
 
+  // creating a new task
   registerTask(entity: TaskModelToRegister): Observable<any> {
     return this.http.post(API_URL + 'registerTask',
     entity, httpOptions).pipe(
@@ -37,6 +38,8 @@ export class TaskService {
 
   }
 
+
+  // assignment of users to task
   assigningUsers(entity, id: any): Observable<any> {
     console.log(entity);
     return this.http.post(API_URL + 'assigningUsers/' + id,
@@ -49,6 +52,7 @@ export class TaskService {
   }
 
 
+  // deattached the user from task
   detachingUser(userId, taskId): Observable<any> {
     return this.http.get(API_URL + 'detachingUser/' + userId + '/' + taskId, httpOptions).pipe(
         tap(resp => {
@@ -58,6 +62,7 @@ export class TaskService {
 
   }
 
+  // updating the task data
   updateTask(entity: TaskModel): Observable<any> {
     return this.http.put(API_URL + 'updateTask',
     entity, httpOptions).pipe(
@@ -69,7 +74,6 @@ export class TaskService {
   }
 
   // Getting Tasks with API
-
   getTasks(): Observable<TaskModel[]> {
     return this.http.get<TaskModel[]>(API_URL + 'getTasks', httpOptions)
     .pipe(
@@ -80,6 +84,7 @@ export class TaskService {
   }
 
 
+  // getting the task of a sinle user
   getUserTask(userId, taskId): Observable<TaskModel> {
     console.log(this.securityObject.id);
     return this.http.get<TaskModel>(API_URL + 'user/'  + userId + '/tasks/' + taskId, httpOptions)
@@ -91,6 +96,7 @@ export class TaskService {
   }
 
 
+  // updating the status of task for a user
   updateTaskStatus(userId, taskId): Observable<any> {
     return this.http.put<any>(API_URL + 'user/'  + userId + '/tasks/' + taskId, httpOptions)
     .pipe(
@@ -99,6 +105,7 @@ export class TaskService {
         }));
   }
 
+  // fetching all the tasks for a user
   getUserTasks(): Observable<TaskModel[]> {
     console.log(this.securityObject.id);
     return this.http.get<TaskModel[]>(API_URL + 'user/'  + this.securityObject.id + '/tasks' , httpOptions)
@@ -110,6 +117,7 @@ export class TaskService {
   }
 
 
+  // fetch only a sinle task
   getTask(id: number): Observable<TaskModel> {
     return this.http.get<TaskModel>(API_URL + 'getTask/' + id, httpOptions)
     .pipe(
@@ -118,6 +126,8 @@ export class TaskService {
         }));
   }
 
+
+  // delete the task (hard delete)
   deleteTask(id: number): Observable<any> {
     return this.http.delete<any>(API_URL + 'deleteTask/' + id, httpOptions)
     .pipe(

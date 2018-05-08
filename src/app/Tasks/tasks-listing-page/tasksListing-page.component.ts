@@ -18,7 +18,7 @@ export class TasksListingComponent implements OnInit {
 
   }
 
-
+// getting the list of all tasks
   getTasks(): void {
     this.taskService.getTasks().subscribe(
       resp => {

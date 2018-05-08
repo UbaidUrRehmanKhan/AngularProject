@@ -47,7 +47,6 @@ export class UserService {
 
 
   // get single user data
-
   getUser(id: number): Observable<UserModel> {
     return this.http.get<UserModel>(API_URL + 'user/' + id, httpOptions)
     .pipe(
@@ -62,6 +61,7 @@ export class UserService {
   }
 
 
+  // updating the data of a user
   updateUser(entity: UserModel): Observable<any> {
     return this.http.put(API_URL + 'updateUser',
     entity, httpOptions).pipe(
@@ -72,6 +72,7 @@ export class UserService {
 
   }
 
+  // changing the status of a user
   updateUserStatus(id: number, status: number): Observable<any> {
     return this.http.put(API_URL + 'updateStatus/'  + id + '/' + status, httpOptions).pipe(
         tap(resp => {
@@ -87,6 +88,7 @@ export class UserService {
   }
 
 
+  // getting all the tasks of a single user
   getUserTasks($id): Observable<TaskModel[]> {
     return this.http.get<TaskModel[]>(API_URL + 'user/' + $id + '/tasks', httpOptions)
     .pipe(

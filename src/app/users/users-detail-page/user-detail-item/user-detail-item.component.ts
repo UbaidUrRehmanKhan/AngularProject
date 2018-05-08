@@ -16,7 +16,7 @@ import { UserModelToRegister } from '../../../auth/register/UserModelToRegister'
 })
 export class UserDetailItemComponent implements OnInit {
 
-  @Input() user: UserModel;
+  @Input() user: UserModel; // User data is received from parent component
   securityObject: AppUserAuth = null;
   constructor(
     private route: ActivatedRoute,

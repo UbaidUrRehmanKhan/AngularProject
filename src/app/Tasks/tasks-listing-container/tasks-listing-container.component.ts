@@ -16,9 +16,10 @@ export class TasksListingContainerComponent implements OnInit {
   errorMessage = '';
   successMessage = '';
   securityObject: AppUserAuth;
-  @Input() tasksArray: TaskModel[];
+  @Input() tasksArray: TaskModel[]; // to get the list of tasks
   @Input() remove: boolean;
-  @Output() itemDeleted = new EventEmitter<{index: number}>();
+  @Output() itemDeleted = new EventEmitter<{index: number}>(); // to send the id of deleted item to parent so that it must
+                                                               // be removed from the list
 
   userId: number;
   constructor(
@@ -36,7 +37,7 @@ export class TasksListingContainerComponent implements OnInit {
 
   }
 
-
+ // detaching the task from user
   removeTask(taskId): void {
     console.log(taskId + '' + this.userId);
     this.taskService.detachingUser(this.userId, taskId).subscribe(
@@ -61,7 +62,7 @@ export class TasksListingContainerComponent implements OnInit {
 
 
 
-
+  // dynamic routing
   getUrl(id): void {
     console.log(id);
     console.log(this.router.url);

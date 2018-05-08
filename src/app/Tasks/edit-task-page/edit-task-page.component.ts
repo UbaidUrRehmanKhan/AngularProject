@@ -28,13 +28,14 @@ export class EditTaskPageComponent implements OnInit {
     this.getTask();
   }
 
-
+ // back button
   goBack(): void {
     this.location.back();
   }
 
 
 
+  // fetching the task detail via query string
   getTask(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.taskService.getTask(id)
@@ -55,6 +56,8 @@ export class EditTaskPageComponent implements OnInit {
       );
   }
 
+
+  // updating the data of task
   updateTask(f: NgForm): void {
     this.errorMessage = null;
     this.successMessage = null;

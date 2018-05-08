@@ -17,6 +17,7 @@ import { AfterViewInit, ViewChild } from '@angular/core';
 })
 export class AssignedTaskDetailsPageComponent implements OnInit {
 
+  // it is the parent most component so it will be responsible to pass the manipulate the data in child
   @ViewChild(FeedbackListingContainerComponent)
   private feedbackContainer: FeedbackListingContainerComponent;
   achievedTask: TaskModel;
@@ -34,9 +35,13 @@ export class AssignedTaskDetailsPageComponent implements OnInit {
   }
 
 
+  // back button
   goBack(): void {
     this.location.back();
   }
+
+
+  // fetching the details of single task that was assigned to a user
   getUserTask(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     console.log(id);
@@ -62,6 +67,7 @@ export class AssignedTaskDetailsPageComponent implements OnInit {
 
 
 
+  // after entering of new feedback comment, that comment will be added to already retrieved tasks
   fetchingFeedback(feedbackObj: FeedbackModel): void {
     console.log(feedbackObj);
     this.feedbackContainer.feedbacksList.push(feedbackObj);

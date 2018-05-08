@@ -16,7 +16,7 @@ import { UserService } from '../../users/user-service.service';
   styleUrls: ['./task-assigning.component.css']
 })
 export class TaskAssigningComponent implements OnInit {
-  @Input() task: TaskModel;
+  @Input() task: TaskModel; // received the task from parent
   successMessage = '';
   errorMessage = '';
   users: UserModel[];
@@ -32,6 +32,7 @@ export class TaskAssigningComponent implements OnInit {
   }
 
 
+  // getting all the users so that we will be able to assigne task to them.
   getUsers(): void {
 
     this.userDataService.getUsers().subscribe(
@@ -47,6 +48,7 @@ export class TaskAssigningComponent implements OnInit {
   }
 
 
+  // final submission of task assignment to user
   onSubmit(): void {
     console.log(this.task);
     for (let i = 0; i < this.selectedUsers.length; i++) {

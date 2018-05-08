@@ -18,6 +18,7 @@ export class FeedbackListingContainerComponent implements OnInit {
   }
 
 
+  // fetching all the feedbacks against a particular task by a single user
   getFeedbacks(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     console.log(id);
@@ -35,6 +36,7 @@ export class FeedbackListingContainerComponent implements OnInit {
     );
   }
 
+  // to remove the task from list afte successful deletion in child component
   onItemDeleted(index) {
     this.feedbacksList.splice(index, 1);
   }

@@ -31,6 +31,8 @@ export class TaskDetailComponentComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  // deleting the task permanently
   onDelete(id): void {
     console.log(id);
     this.taskService.deleteTask(id).subscribe(
@@ -52,6 +54,7 @@ export class TaskDetailComponentComponent implements OnInit {
   }
 
 
+  // updating the task progress status for a user (whether completed or not)
   updateTaskStatus(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     console.log(id);

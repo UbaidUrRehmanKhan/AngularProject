@@ -19,7 +19,7 @@ export class TableComponent implements OnInit {
     this.getUsers();
   }
 
-
+  // fetching the record of all users
   getUsers(): void {
     this.columns = this.userDataService.getColumns();
     this.userDataService.getUsers().subscribe(
@@ -34,6 +34,7 @@ export class TableComponent implements OnInit {
     );
   }
 
+  // changing the user status(active/inactive)
   onSelect(user: UserModel, roleStatus: number): void {
     this.selectedUser = user;
     console.log(status);
@@ -42,6 +43,10 @@ export class TableComponent implements OnInit {
     this.userDataService.updateUserStatus(this.selectedUser.id, roleStatus).subscribe(
       resp => {
         console.log('Response in user updation ' + resp);
+        const obj =  this.users.filter(x => x.id === this.selectedUser.id)[0];
+        console.log(obj);
+        obj.isActive = roleStatus;
+
       },
       (err: HttpErrorResponse) => {
         if (err.status === 304) {

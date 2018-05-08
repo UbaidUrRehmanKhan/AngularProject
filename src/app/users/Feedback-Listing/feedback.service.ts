@@ -15,7 +15,7 @@ export class FeedbackService {
 
   constructor(private http: HttpClient) { }
 
-
+  // creating new feedback
   newFeedbackItem(entity: FeedbackModelToRegister, userId, id): Observable<any> {
     return this.http.post(API_URL + 'registerFeedback/' + userId + '/' + id,
     entity, httpOptions).pipe(
@@ -26,7 +26,7 @@ export class FeedbackService {
 
   }
 
-
+// getting all the feedbacks of a particular task
   veiwFeedbacks( userId, id): Observable<any> {
     return this.http.get(API_URL + 'viewFeedbacks/' + userId + '/' + id,
      httpOptions).pipe(
@@ -37,7 +37,7 @@ export class FeedbackService {
 
   }
 
-
+ // delete a single feedback
   deleteFeedback(id: number): Observable<any> {
     return this.http.delete<any>(API_URL + 'deleteFeedback/' + id, httpOptions)
     .pipe(

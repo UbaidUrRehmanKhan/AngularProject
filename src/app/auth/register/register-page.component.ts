@@ -13,9 +13,10 @@ import { Location } from '@angular/common';
 })
 export class RegisterComponent implements OnInit {
 
-  user: UserModelToRegister = new UserModelToRegister();
+  user: UserModelToRegister = new UserModelToRegister(); // to take the user details for registeration
   errorMessage = null;
   successMessage = null;
+
   // to be used for dynamic binding (currently not required)
   roles = [
     {value: 1, name: 'Admin'},
@@ -32,6 +33,7 @@ export class RegisterComponent implements OnInit {
 
   }
 
+  // back button
   goBack(): void {
     this.location.back();
   }

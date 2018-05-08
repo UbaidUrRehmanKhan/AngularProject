@@ -40,13 +40,7 @@ export class UserDetailComponent implements OnInit {
 
   }
 
-  // getUser(): void {
-  //   const id = +this.route.snapshot.paramMap.get('id');
-  //   this.userService.getUser(id)
-  //     .subscribe(user => this.user = user);
-
-  // }
-
+  // getting the data from query string
   getUser(): void {
     this.id = +this.route.snapshot.paramMap.get('id');
     this.userService.getUser(this.id).subscribe(
@@ -67,6 +61,9 @@ export class UserDetailComponent implements OnInit {
 
   }
 
+
+
+  // fetching all the tasks against that particular user
   getUserTasks(): void {
     this.userService.getUserTasks(this.id).subscribe(
       resp => {
@@ -80,11 +77,14 @@ export class UserDetailComponent implements OnInit {
     );
   }
 
+
+  // back button
   goBack(): void {
     this.location.back();
   }
 
 
+  // remove the task from tasks list after receiving the successful deletion signal(id) from child component
   onItemDeleted(index) {
     this.tasks.splice(index, 1);
   }
