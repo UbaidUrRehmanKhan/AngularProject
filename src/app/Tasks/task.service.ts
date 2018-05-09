@@ -29,7 +29,7 @@ export class TaskService {
 
   // creating a new task
   registerTask(entity: TaskModelToRegister): Observable<any> {
-    return this.http.post(API_URL + 'registerTask',
+    return this.http.post(API_URL + 'task',
     entity, httpOptions).pipe(
         tap(resp => {
           console.log('Response of Task Creation in Security Service ' + resp);
@@ -64,7 +64,7 @@ export class TaskService {
 
   // updating the task data
   updateTask(entity: TaskModel): Observable<any> {
-    return this.http.put(API_URL + 'updateTask',
+    return this.http.put(API_URL + 'task',
     entity, httpOptions).pipe(
         tap(resp => {
           console.log('Response of Task updation in Task Service ' + resp);
@@ -75,7 +75,7 @@ export class TaskService {
 
   // Getting Tasks with API
   getTasks(): Observable<TaskModel[]> {
-    return this.http.get<TaskModel[]>(API_URL + 'getTasks', httpOptions)
+    return this.http.get<TaskModel[]>(API_URL + 'tasks', httpOptions)
     .pipe(
         tap(resp => {
             this.tasks = resp;
@@ -119,7 +119,7 @@ export class TaskService {
 
   // fetch only a sinle task
   getTask(id: number): Observable<TaskModel> {
-    return this.http.get<TaskModel>(API_URL + 'getTask/' + id, httpOptions)
+    return this.http.get<TaskModel>(API_URL + 'task/' + id, httpOptions)
     .pipe(
         tap(resp => {
             console.log('Fetched Task Data ' + resp);
@@ -129,7 +129,7 @@ export class TaskService {
 
   // delete the task (hard delete)
   deleteTask(id: number): Observable<any> {
-    return this.http.delete<any>(API_URL + 'deleteTask/' + id, httpOptions)
+    return this.http.delete<any>(API_URL + 'task/' + id, httpOptions)
     .pipe(
         tap(resp => {
             console.log('Task is Deleted. ');

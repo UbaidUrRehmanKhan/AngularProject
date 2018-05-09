@@ -63,7 +63,7 @@ export class UserService {
 
   // updating the data of a user
   updateUser(entity: UserModelToRegister): Observable<any> {
-    return this.http.put(API_URL + 'updateUser',
+    return this.http.put(API_URL + 'user',
     entity, httpOptions).pipe(
         tap(resp => {
           console.log('Response of User updation in user Service ' + resp);

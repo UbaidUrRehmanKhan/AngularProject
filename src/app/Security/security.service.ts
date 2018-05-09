@@ -56,7 +56,7 @@ export class SecurityService {
 
 
   register(entity: UserModelToRegister): Observable<any> {
-    return this.http.post(API_URL + 'registerUser',
+    return this.http.post(API_URL + 'user',
     entity, httpOptions).pipe(
         tap(resp => {
           console.log('Response of User Creation in Security Service ' + resp);
