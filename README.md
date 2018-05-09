@@ -2,20 +2,20 @@
 ***
 ### Project Configuration:
 **NOTE:** Configuration of Laravel API Project is necessary to run the project.
- 1- Clone or Download the projct. 
- 2- cd AngularProject
- 3- npm install
- 4- ng serve --open
+ - Clone or Download the projct. 
+ - cd AngularProject
+ - npm install
+ - ng serve --open
  
  > **NOTE :** 
-> 1- As same component is used at different places, so their description will vary depending upon the data is provided from backend.
-> 2- Laravel APIs name is different from what is wirtten actually on backend, so to build a clear understanding over here, I have used a descriptive sort of naming convention for APIs.
-> 3- I have discussed each and every page, components which are used in it and the backend Laravel API calls.
+> - As same component is used at different places, so their description will vary depending upon the data is provided from backend.
+> - Laravel APIs name is different from what is wirtten actually on backend, so to build a clear understanding over here, I have used a descriptive sort of naming convention for APIs.
+> - I have discussed each and every page, components which are used in it and the backend Laravel API calls.
 
  
 ### Project Brief Description: 
 This project is all about creating various tasks and assigning those tasks to users. Admin will be responsible to Perform CRUD related operations for users and tasks. He will also be responsible to assign/deassign task to user and view the user's feedback for that task. On the other hand, user will be responsible to update the task status, add the feedback and delete the feedbacsk.
-Following is the detail description of project:
+[Following is the detail description of project:][df1]
 # User Panel
 
 ### 1- Assigned Tasks Listing Page
