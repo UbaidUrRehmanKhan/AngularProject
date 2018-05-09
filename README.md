@@ -1,11 +1,13 @@
-# Sample Task Management Application using AngularJS 
+# Sample Task Management Application using Angular 4
 ***
 ### Project Configuration:
-**NOTE:** Configuration of Laravel API Project is necessary to run the project.
- - Clone or Download the projct. 
+ 
+ - Clone or Download the project. 
  - cd AngularProject
  - npm install
  - ng serve --open
+ - Configuration of Laravel API Project is necessary to run the project.
+   (https://github.com/UbaidUrRehmanKhan/Laravel_APIs_for_AngularProject.git)
  
  > **NOTE :** 
 > - As same component is used at different places, so their description will vary depending upon the data is provided from backend.
@@ -14,12 +16,14 @@
 
  
 ### Project Brief Description: 
-This project is all about creating various tasks and assigning those tasks to users. Admin will be responsible to Perform CRUD related operations for users and tasks. He will also be responsible to assign/deassign task to user and view the user's feedback for that task. On the other hand, user will be responsible to update the task status, add the feedback and delete the feedbacsk.
+This project is all about creating various tasks and assigning those tasks to users. Admin will be responsible to Perform CRUD related operations for users and tasks. He will also be responsible to assign/deassign task to user and view the user's feedback for that task. On the other hand, user will be responsible to update the task status, add the feedback and delete the feedbacks.
+
 [Following is the detail description of project:][df1]
 # User Panel
 
 ### 1- Assigned Tasks Listing Page
 **Description**: This is the starter page after successful login for a simple user and it is used to display the list of all tasks that are assigned to the user.
+
 [Following Attributes will be shown:][df1]
 - Task ID
 - Task Name
@@ -31,6 +35,7 @@ This project is all about creating various tasks and assigning those tasks to us
 
 ### 2- Assigned Task Detail Page
 **Description**: It is used to display the details among one of the tasks that are assigned to the user and the button to update the status of task to be completed. It has also the option to give feedback and viewing all the previously added feedbacks. 
+
 [Following components with their attributes and widgets are as follows:][df1]
 - Task Detail Component
   - Task ID
@@ -56,6 +61,7 @@ This project is all about creating various tasks and assigning those tasks to us
 
 ### 1- Users Listing Page
 **Description**: It is used to display the list of all users and the option to change the status of users. This page also contains 'Add New User' Button.
+
 [Following components with their attributes and widgets are as follows:][df1]
 - Users List Component
   - User ID
@@ -71,6 +77,7 @@ This project is all about creating various tasks and assigning those tasks to us
 
 ### 2- Adding New User Page (Edit User Page)
 **Description**: This page is used to save a new user and it is also used to update the datials of a user, if we come from a different route with query parameters.
+
 [Following attributes will be used:][df1]
 - User ID (for updating)
 - User Name
@@ -107,6 +114,7 @@ This project is all about creating various tasks and assigning those tasks to us
 
 ### 4- Assigned Task Detail Page
 **Description**: It is used to display the details among one of the tasks that are assigned to the user with delete and edit buttons. It has also the option of viewing all the previously feedbacks. 
+
 [Following components with their attributes and widgets are as follows:][df1]
 - Task Detail Component
   - Task ID
@@ -127,6 +135,7 @@ This project is all about creating various tasks and assigning those tasks to us
 
 ### 5- Tasks Listing Page
 **Description**: It is used to display the list of all tasks of application. This page also contains 'Add New Task' Button.
+
 [Following components with their attributes and widgets are as follows:][df1]
 - Tasks List Component
   - Task ID
@@ -139,6 +148,7 @@ This project is all about creating various tasks and assigning those tasks to us
 
 ### 6- Adding New Task Page (Edit Task Page)
 **Description**: This page is used to create a new task and it is also used to update the datials of a task, if we come from a different route with query parameters.
+
 [Following attributes will be used:][df1]
 - Task ID (for updating)
 - Task Name
